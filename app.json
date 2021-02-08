@@ -1,0 +1,40 @@
+{
+  "name": "unitz-mobile-advisor",
+  "displayName": "unitz-mobile-advisor",
+  "expo": {
+    "name": "unitz-mobile-advisor",
+    "slug": "unitz-mobile-advisor",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "../../modules/unitz-app/assets/Icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "../../modules/unitz-app/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-6395643728392024~1526666099",
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.416800550219-munmu2hrkpnfng733koimgc02botm6l3"
+        }
+      },
+      "googleServicesFile": "./ios/GoogleService-Info.plist",
+      "bundleIdentifier": "com.unitz.mobile-advisor",
+      "buildNumber": "1"
+    },
+    "android": {
+      "package": "com.unitzmobileadvisor",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-6395643728392024~1526666099"
+      },
+      "googleServicesFile": "./android/app/google-services.json",
+      "versionCode": 1
+    }
+  }
+}

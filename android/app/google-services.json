@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "722707888554",
+    "firebase_url": "https://unitz-app-default-rtdb.firebaseio.com",
+    "project_id": "unitz-app",
+    "storage_bucket": "unitz-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722707888554:android:adddba8b3b89ddc30453d3",
+        "android_client_info": {
+          "package_name": "com.unitzmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722707888554-gkfhiqbv8lm247s9r23km7kfsjpoi3di.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0qjhR7EwOd4-y-WvkPjxO_krET5XmXUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722707888554-gkfhiqbv8lm247s9r23km7kfsjpoi3di.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "722707888554-lck0ht14re83ttrj031cfk56o53tjnl7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.unitz.mobileadvisor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722707888554:android:fbac7aa080dc55c60453d3",
+        "android_client_info": {
+          "package_name": "com.unitzmobileadvisor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722707888554-gkfhiqbv8lm247s9r23km7kfsjpoi3di.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0qjhR7EwOd4-y-WvkPjxO_krET5XmXUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722707888554-gkfhiqbv8lm247s9r23km7kfsjpoi3di.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "722707888554-lck0ht14re83ttrj031cfk56o53tjnl7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.unitz.mobileadvisor"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
