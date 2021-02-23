@@ -6,10 +6,10 @@
     "slug": "unitz-mobile-advisor",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "../../modules/unitz-app/assets/Icon.png",
+    "icon": "../../modules/unitz-assets/Icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "../../modules/unitz-app/assets/splash.png",
+      "image": "../../modules/unitz-assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
