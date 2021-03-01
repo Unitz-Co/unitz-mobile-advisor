@@ -62,7 +62,7 @@
     "@vl/polyfill": "1.0.0",
     "@vl/redata": "1.0.0",
     "assert": "^2.0.0",
-    "babel-plugin-import-graphql": "^2.7.0",
+    "babel-plugin-import-graphql": "^2.8.1",
     "babel-plugin-inline-dotenv": "^1.6.0",
     "babel-plugin-inline-import": "^3.0.0",
     "contentful": "^8.1.7",
