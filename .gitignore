@@ -59,6 +59,11 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 
+# env
+.env
+env/*.env
+.env.*
+
 # Expo
 .expo/*
 web-build/

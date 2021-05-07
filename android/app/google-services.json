@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "722707888554-t9g3ocrd8a4ft2qmkaqppdqtflj90o4e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.unitzmobile",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "722707888554-gkfhiqbv8lm247s9r23km7kfsjpoi3di.apps.googleusercontent.com",
           "client_type": 3
         }
