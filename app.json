@@ -19,20 +19,14 @@
     "ios": {
       "supportsTablet": true,
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-6395643728392024~1526666099",
-        "googleSignIn": {
-          "reservedClientId": "com.googleusercontent.apps.416800550219-munmu2hrkpnfng733koimgc02botm6l3"
-        }
+        "googleMobileAdsAppId": "ca-app-pub-6395643728392024~1526666099"
       },
       "googleServicesFile": "./ios/GoogleService-Info.plist",
-      "bundleIdentifier": "com.unitz.mobile-advisor",
+      "bundleIdentifier": "unitz.app.mobileadvisor",
       "buildNumber": "1"
     },
     "android": {
       "package": "com.unitzmobileadvisor",
-      "config": {
-        "googleMobileAdsAppId": "ca-app-pub-6395643728392024~1526666099"
-      },
       "googleServicesFile": "./android/app/google-services.json",
       "versionCode": 1
     }
