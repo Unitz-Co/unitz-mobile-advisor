@@ -29,7 +29,7 @@ import I18nProvider from '@uz/unitz-providers/I18nProvider';
 import TestProvider from '@uz/unitz-providers/TestProvider';
 // import IAPProvider from '@na/components/IAPProvider';
 
-import NSApp from "@uz/unitz-app";
+import NSApp from "@uz/unitz-app-advisor";
 
 
 const App = () => (
