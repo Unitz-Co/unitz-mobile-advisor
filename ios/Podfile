@@ -21,4 +21,13 @@ target 'unitzmobileadvisor' do
   #  post_install do |installer|
   #    flipper_post_install(installer)
   #  end
+  pod 'OpenTok', '2.18.1'
 end
+
+# post_install do |installer|
+#   installer.pods_project.targets.each do |target|
+#     target.build_configurations.each do |config|
+#       config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+#     end
+#   end
+# end

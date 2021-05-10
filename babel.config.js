@@ -6,7 +6,9 @@ module.exports = function(api) {
     presets: ['babel-preset-expo'],
     plugins: [
       'macros',
-      'import-graphql',
+      ['import-graphql', {
+        nodePath: path.resolve(process.cwd(), '../../modules'),
+      }],
       ['inline-dotenv', {
         unsafe: true,
         path: path.resolve(process.cwd(), 'env/US.env'),
