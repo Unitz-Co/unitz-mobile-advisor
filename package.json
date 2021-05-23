@@ -13,7 +13,7 @@
     "clean:android:build": "yarn clean && rm -rf ./android/app/build",
     "clean:ios": "cd ios && xcodebuild clean && rm -Rf builds && cd ../",
     "clean:build": "yarn clean:android && yarn clean:ios",
-    "config:env": "rsync -aP ../../../env/packages/unitz-mobile-advisor/ ./",
+    "config:env": "rsync -aP ../../../config/env-app-mobile/packages/unitz-mobile-advisor/ ./",
     "config:android": "cp ../../../config/credentials/packages/unitz-mobile-advisor/android/* android/app/ && yarn config:env",
     "config:ios": "cp ../../../config/credentials/packages/unitz-mobile-advisor/ios/* ios/ && yarn config:env",
     "dist:android:fib": "firebase appdistribution:distribute android/app/build/outputs/apk/release/app-release.apk",
