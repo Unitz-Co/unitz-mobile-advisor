@@ -39,9 +39,6 @@ platform :android do
 
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
-    # increment_version_code(
-    #   gradle_file_path: "app/build.gradle",
-    # )
     android_set_version_code(
       version_code: (Time.now.to_i() - 1577840400) / 100
     )
@@ -49,10 +46,14 @@ platform :android do
       task: 'assemble',
       build_type: 'Release',
     )
+
     # crashlytics
+
     upload_to_play_store(
       track: 'internal',
       release_status: 'draft',
+      skip_upload_screenshots: true,
+      skip_upload_images: true,
       apk: 'app/build/outputs/apk/release/app-release.apk',
     )
   
@@ -60,9 +61,6 @@ platform :android do
 
   desc "Deploy a new version to the Google Play"
   lane :release do
-    # increment_version_code(
-    #   gradle_file_path: "app/build.gradle",
-    # )
     android_set_version_code(
       version_code: (Time.now.to_i() - 1577840400) / 100
     )
@@ -71,6 +69,8 @@ platform :android do
       build_type: 'Release',
     )
     upload_to_play_store(
+      track: 'production',
+      release_status: 'draft',
       apk: 'app/build/outputs/apk/release/app-release.apk',
     )
   end
