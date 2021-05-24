@@ -67,3 +67,5 @@ env/*.env
 # Expo
 .expo/*
 web-build/
+
+AuthKey.p8
