@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - "stage/android"
-      # - "master"
     # tags:
     #   - "v*"
 # defaults:
@@ -71,6 +70,7 @@ jobs:
         working-directory: ${{env.working-directory}}
         run: |
           yarn install
+          yarn nuke:modules
       - name: Setup kernel for react native, increase watchers
         run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
       - name: build android

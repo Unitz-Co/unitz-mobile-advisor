@@ -1,4 +1,4 @@
-name: stage Distribution ios
+name: stage ios
 
 # Run this workflow every time a new commit pushed to your repository
 on:
@@ -62,6 +62,7 @@ jobs:
         working-directory: ${{env.working-directory}}
         run: |
           yarn install
+          yarn nuke:modules
       - name: install pod
         working-directory: ${{env.working-directory}}
         run: |

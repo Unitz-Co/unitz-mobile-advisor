@@ -1,4 +1,4 @@
-name: release android
+name: Release android
 
 # Run this workflow every time a new commit pushed to your repository
 on:
@@ -14,13 +14,20 @@ jobs:
   release-android:
     runs-on: ubuntu-latest
     env:
-      working-directory: ./ws/packages/unitz-mobile
+      working-directory: ./ws/packages/unitz-mobile-advisor
     steps:
+      - name: Slack Notification Start
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
       - name: setup node v12
         uses: actions/setup-node@v2
         with:
           node-version: '12'
           check-latest: true
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.0
       - name: Set up our JDK environment
         uses: actions/setup-java@v1.4.3
         with:
@@ -35,15 +42,15 @@ jobs:
       - name: clone env
         uses: actions/checkout@v2
         with:
-          repository: Unitz-Co/env
-          path: env
+          repository: Unitz-Co/envprod-app-mobile
+          path: config/env-app-mobile
           token: ${{ secrets.PAT_TOKEN }}
           persist-credentials: true
       - name: clone credentials
         uses: actions/checkout@v2
         with:
-          repository: Unitz-Co/credentials
-          path: credentials
+          repository: Unitz-Co/credentials-prod
+          path: config/credentials
           token: ${{ secrets.PAT_TOKEN }}
           persist-credentials: true
 
@@ -63,10 +70,16 @@ jobs:
         working-directory: ${{env.working-directory}}
         run: |
           yarn install
+          yarn nuke:modules
       - name: Setup kernel for react native, increase watchers
         run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
       - name: build android
         working-directory: ${{env.working-directory}}
         run: |
-          cd android
-          yarn build:android:release
+          sudo yarn build:android:release
+      - uses: iRoachie/slack-github-actions@v2.3.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        with:
+          status: ${{ job.status }}
+        if: ${{ always() }}

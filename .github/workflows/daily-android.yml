@@ -1,29 +1,36 @@
-name: Beta ios
+name: Daily android
 
 # Run this workflow every time a new commit pushed to your repository
 on:
-  push:
-    branches:
-      - "beta/ios"
+  schedule:
+    - cron:  '1 1 * * *'
     # tags:
     #   - "v*"
 # defaults:
 #   run:
 #     working-directory: ./your_working_dir
 jobs:
-  beta-ios:
-    runs-on: macOS-latest
-    strategy:
-      matrix:
-        destination: ['platform=iOS Simulator,OS=13.1,name=iPhone 11']
+  daily-android:
+    runs-on: ubuntu-latest
     env:
       working-directory: ./ws/packages/unitz-mobile-advisor
     steps:
+      - name: Slack Notification Start
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
       - name: setup node v12
         uses: actions/setup-node@v2
         with:
           node-version: '12'
           check-latest: true
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.0
+      - name: Set up our JDK environment
+        uses: actions/setup-java@v1.4.3
+        with:
+          java-version: 1.8
       - name: clone workspace
         uses: actions/checkout@v2
         with:
@@ -57,33 +64,22 @@ jobs:
       - name: retrive certs and env
         working-directory: ${{env.working-directory}}
         run: |
-          yarn config:ios
+          yarn config:android
       - name: build modules
         working-directory: ${{env.working-directory}}
         run: |
           yarn install
           yarn nuke:modules
-      - name: install pod
+      - name: Setup kernel for react native, increase watchers
+        run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+      - name: build android
         working-directory: ${{env.working-directory}}
         run: |
-          cd ios
-          pod install
-      - name: Create IPA Build
+          sudo yarn build:android:stage
+      - name: upload artifact to Firebase App Distribution
         working-directory: ${{env.working-directory}}
-        env:
-          APP_IDENTIFIER: ${{ secrets.APP_IDENTIFIER }}
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          ITC_TEAM_ID: ${{ secrets.ITC_TEAM_ID }}
-          GIT_REPO_URL: ${{ secrets.GIT_REPO_URL }}
-          CI_KEYCHAIN_NAME: ${{ secrets.CI_KEYCHAIN_NAME }}
-          CI_KEYCHAIN_PASSWORD: ${{ secrets.CI_KEYCHAIN_PASSWORD }}
-          DEVELOPER_TEAM_ID: ${{ secrets.DEVELOPER_TEAM_ID }}
-          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
         run: |
-          cd ios
-          fastlane beta
+          yarn dist:android:fib --app ${{secrets.FIREBASE_ANDROID_APP_ID}} --groups testers --token ${{secrets.FIREBASE_TOKEN}}
       - uses: iRoachie/slack-github-actions@v2.3.0
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}

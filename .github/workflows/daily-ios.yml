@@ -1,17 +1,16 @@
-name: Beta ios
+name: Daily ios
 
 # Run this workflow every time a new commit pushed to your repository
 on:
-  push:
-    branches:
-      - "beta/ios"
+  schedule:
+    - cron:  '1 1 * * *'
     # tags:
     #   - "v*"
 # defaults:
 #   run:
 #     working-directory: ./your_working_dir
 jobs:
-  beta-ios:
+  daily-ios:
     runs-on: macOS-latest
     strategy:
       matrix:
@@ -83,7 +82,11 @@ jobs:
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
         run: |
           cd ios
-          fastlane beta
+          fastlane firebase
+      - name: upload artifact to Firebase App Distribution
+        working-directory: ${{env.working-directory}}
+        run: |
+          yarn dist:ios:fib --app ${{secrets.FIREBASE_IOS_APP_ID}} --groups testers --token ${{secrets.FIREBASE_TOKEN}}
       - uses: iRoachie/slack-github-actions@v2.3.0
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
