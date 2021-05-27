@@ -16,6 +16,7 @@ import Providers from '@uz/components/Providers';
 import StyleManager from '@vl/gstyles/StyleManager';
 import ContentProvider from '@uz/unitz-providers/ContentfulProvider';
 import AuthProvider from '@uz/unitz-providers/AuthProvider';
+import AdvisorProvider from '@uz/unitz-providers/AdvisorProvider';
 import PresenceProvider from '@uz/unitz-providers/PresenceProvider';
 import LayoutProvider from '@uz/unitz-providers/LayoutProvider';
 import RefProvider from '@uz/unitz-providers/RefProvider';
@@ -43,6 +44,7 @@ const App = () => (
       StyleManager,
       SafeAreaProvider,
       LayoutProvider,
+      AdvisorProvider,
     ]}
   >
     <NSApp />
