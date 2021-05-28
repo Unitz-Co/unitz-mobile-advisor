@@ -24,15 +24,17 @@ platform :android do
 
   desc "Update build version"
   lane :update_version do
-    # android_set_version_code(
-    #   version_code: (Time.now.to_i() - 1577840400) / 100
-    # )
     VERSION_CODE = (Time.now.to_i() - 1577840400) / 100
+    android_set_version_code(
+      version_code: VERSION_CODE
+    )
   end
 
   desc "Submit a new Beta Build to Firebase distribution"
   lane :stage do
     update_version()
+    update_appicon()
+    update_splash()
     gradle(
       tasks: ["assembleRelease", "bundleRelease"],
       properties: {
@@ -44,6 +46,8 @@ platform :android do
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
     update_version()
+    update_appicon()
+    update_splash()
     gradle(
       tasks: ["assembleRelease", "bundleRelease"],
       properties: {
@@ -66,6 +70,8 @@ platform :android do
   desc "Deploy a new version to the Google Play"
   lane :release do
     update_version()
+    update_appicon()
+    update_splash()
     gradle(
       tasks: ["assembleRelease", "bundleRelease"],
       properties: {
@@ -82,7 +88,7 @@ platform :android do
   desc "Update appicon"
   lane :update_appicon do
     android_appicon(
-      appicon_image_file: '../../../modules/unitz-assets/Icon.png',
+      appicon_image_file: '../../../modules/unitz-assets/IconAdvisor.png',
       appicon_path: 'app/src/main/res/mipmap',
       generate_rounded: true
     )
@@ -91,9 +97,9 @@ platform :android do
   desc "Update splash"
   lane :update_splash do
     android_appicon(
-      appicon_image_file: '../../../modules/unitz-assets/splash.png',
+      appicon_image_file: '../../../modules/unitz-assets/SplashAdvisor.png',
       appicon_icon_types: %i[splash_port splash_land],
-      appicon_path: 'app/src/main/res_t/drawable/splash',
+      appicon_path: 'app/src/main/res/splashscreen',
       appicon_filename: 'splash'
     )
   end
