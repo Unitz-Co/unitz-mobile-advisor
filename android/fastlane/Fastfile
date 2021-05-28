@@ -12,6 +12,7 @@
 
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
+VERSION_CODE = 1
 
 default_platform(:android)
 
@@ -21,30 +22,33 @@ platform :android do
     gradle(task: "test")
   end
 
+  desc "Update build version"
+  lane :update_version do
+    # android_set_version_code(
+    #   version_code: (Time.now.to_i() - 1577840400) / 100
+    # )
+    VERSION_CODE = (Time.now.to_i() - 1577840400) / 100
+  end
+
   desc "Submit a new Beta Build to Firebase distribution"
   lane :stage do
-    # increment_version_code(
-    #   gradle_file_path: "app/build.gradle",
-    #   ext_constant_name: "test"
-    #   app_folder_name:"app"
-    # )
-    # android_set_version_code(
-    #   version_code: 17, # optional, if not specified, Version Code will be incremented
-    # )
-    android_set_version_code(
-      version_code: (Time.now.to_i() - 1577840400) / 100
+    update_version()
+    gradle(
+      tasks: ["assembleRelease", "bundleRelease"],
+      properties: {
+        "versionCode" => VERSION_CODE,
+      }
     )
-    gradle(task: "assembleRelease")
   end
 
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
-    android_set_version_code(
-      version_code: (Time.now.to_i() - 1577840400) / 100
-    )
+    update_version()
     gradle(
-      task: 'assemble',
-      build_type: 'Release',
+      tasks: ["assembleRelease", "bundleRelease"],
+      properties: {
+        "versionCode" => VERSION_CODE,
+      }
     )
 
     # crashlytics
@@ -61,12 +65,12 @@ platform :android do
 
   desc "Deploy a new version to the Google Play"
   lane :release do
-    android_set_version_code(
-      version_code: (Time.now.to_i() - 1577840400) / 100
-    )
+    update_version()
     gradle(
-      task: 'assemble',
-      build_type: 'Release',
+      tasks: ["assembleRelease", "bundleRelease"],
+      properties: {
+        "versionCode" => VERSION_CODE,
+      }
     )
     upload_to_play_store(
       track: 'production',
