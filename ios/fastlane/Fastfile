@@ -294,14 +294,14 @@ platform :ios do
     appicon(
       appicon_devices: [:ipad, :iphone, :ios_marketing],
       appicon_path: "unitzmobileadvisor/Images.xcassets",
-      appicon_image_file: '../../../modules/unitz-assets/IconAdvisor.jpg'
+      appicon_image_file: '../../../modules/unitz-assets/Advisor/Icon.jpg'
     )
   end
 
   desc "Update splash"
   lane :splash_screen do
     appicon(
-      appicon_image_file: '../../../modules/unitz-assets/SplashAdvisor.png',
+      appicon_image_file: '../../../modules/unitz-assets/Advisor/splashscreen.png',
       appicon_devices: [:universal],
       appicon_path: "unitzmobileadvisor/Images.xcassets",
       appicon_name: 'SplashScreen.imageset'
