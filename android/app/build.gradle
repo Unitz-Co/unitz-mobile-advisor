@@ -132,7 +132,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.unitzmobileadvisor"
+        applicationId "app.unitz.advisor"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

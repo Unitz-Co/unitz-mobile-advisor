@@ -1,4 +1,4 @@
-package com.unitzmobileadvisor.generated;
+package app.unitz.advisor.generated;
 
 import java.util.Arrays;
 import java.util.List;
