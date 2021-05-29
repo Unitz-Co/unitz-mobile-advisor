@@ -1,11 +1,11 @@
-git_url("git@github.com:Unitz-Co/fatstlane-certificates.git")
+git_url("git@github.com:Unitz-Co/fastlane-certificates.git")
 
 storage_mode("git")
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
 
-app_identifier(["unitz.app.mobileadvisor"])
-username("hungtran0203@gmail.com") # Your Apple Developer Portal username
+app_identifier(["app.unitz.advisor"])
+username("hi@unitz.app") # Your Apple Developer Portal username
 
 # For all available options run `fastlane match --help`
 # Remove the # in the beginning of the line to enable the other options
