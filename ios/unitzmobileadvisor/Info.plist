@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>FacebookAdvertiserIDCollectionEnabled</key>
-	<true/>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -31,7 +27,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb466026994412612</string>
+				<string>fb466026994412612advisor</string>
 			</array>
 		</dict>
 		<dict>
@@ -45,10 +41,16 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<true/>
 	<key>FacebookAppID</key>
 	<string>466026994412612</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<true/>
 	<key>FacebookDisplayName</key>
-	<string>Unitz Advisor</string>
+	<string>Unitz</string>
+	<key>FacebookUrlSchemeSuffix</key>
+	<string>advisor</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-6395643728392024~1526666099</string>
 	<key>LSApplicationQueriesSchemes</key>
