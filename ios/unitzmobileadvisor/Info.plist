@@ -31,7 +31,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb471041240857045</string>
+				<string>fb466026994412612</string>
 			</array>
 		</dict>
 		<dict>
@@ -46,7 +46,7 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>471041240857045</string>
+	<string>466026994412612</string>
 	<key>FacebookDisplayName</key>
 	<string>Unitz Advisor</string>
 	<key>GADApplicationIdentifier</key>
