@@ -16,3 +16,5 @@ fastlane/derived
 # fastlane builds
 builds/*
 *.xcarchive
+
+*.p8
