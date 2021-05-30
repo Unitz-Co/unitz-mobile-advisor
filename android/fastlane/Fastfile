@@ -24,7 +24,7 @@ platform :android do
 
   desc "Update build version"
   lane :update_version do
-    VERSION_CODE = (Time.now.to_i() - 1577840400) / 100
+    VERSION_CODE = ENV['BUILD_NUMBER_CUR'] || (Time.now.to_i() - 1577840400) / 100
     android_set_version_code(
       version_code: VERSION_CODE
     )

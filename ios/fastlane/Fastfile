@@ -68,15 +68,15 @@ platform :ios do
     MY_APP_ID = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
     MY_PROFILE = "match AppStore #{MY_APP_ID}"
     MY_TEAM = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
-    build_number = (Time.now.to_i() - 1577840400) / 100
+    VERSION_CODE = ENV['BUILD_NUMBER_CUR'] || (Time.now.to_i() - 1577840400) / 100
 
     # match Appstore unitz.app.mobile
     ios_set_version(
-      version: "1.0." + build_number.to_s,
+      version: "1.0." + VERSION_CODE.to_s,
       xcodeproj: XCODE_PROJECT # optional
     )
     ios_set_build_number(
-      build_number: build_number, # optional, if not specified, Build Number will be incremented
+      build_number: VERSION_CODE, # optional, if not specified, Build Number will be incremented
       xcodeproj: XCODE_PROJECT # optional
     )
     # increment_build_number(xcodeproj: XCODE_PROJECT)
@@ -159,14 +159,14 @@ platform :ios do
     MY_APP_ID = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
     MY_PROFILE = "match AdHoc #{MY_APP_ID}"
     MY_TEAM = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
-    build_number = (Time.now.to_i() - 1577840400) / 100
+    VERSION_CODE = ENV['BUILD_NUMBER_CUR'] || (Time.now.to_i() - 1577840400) / 100
     # match Appstore unitz.app.mobile
     ios_set_version(
-      version: "1.0." + build_number.to_s,
+      version: "1.0." + VERSION_CODE.to_s,
       xcodeproj: XCODE_PROJECT # optional
     )
     ios_set_build_number(
-      build_number: build_number, # optional, if not specified, Build Number will be incremented
+      build_number: VERSION_CODE, # optional, if not specified, Build Number will be incremented
       xcodeproj: XCODE_PROJECT # optional
     )
     # increment_build_number(xcodeproj: XCODE_PROJECT)
