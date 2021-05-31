@@ -68,15 +68,15 @@ platform :ios do
     MY_APP_ID = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
     MY_PROFILE = "match AppStore #{MY_APP_ID}"
     MY_TEAM = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
-    build_number = (Time.now.to_i() - 1577840400) / 100
+    VERSION_CODE = ENV['BUILD_NUMBER_CUR'] || (Time.now.to_i() - 1577840400) / 100
 
     # match Appstore unitz.app.mobile
     ios_set_version(
-      version: "1.0." + build_number.to_s,
+      version: "1.0." + VERSION_CODE.to_s,
       xcodeproj: XCODE_PROJECT # optional
     )
     ios_set_build_number(
-      build_number: build_number, # optional, if not specified, Build Number will be incremented
+      build_number: VERSION_CODE, # optional, if not specified, Build Number will be incremented
       xcodeproj: XCODE_PROJECT # optional
     )
     # increment_build_number(xcodeproj: XCODE_PROJECT)
@@ -115,6 +115,9 @@ platform :ios do
       bundle_identifier: MY_APP_ID,
       profile_name: MY_PROFILE
     )
+
+    update_appicon
+    splash_screen
 
     build_app(
       workspace: XCODE_WORKSPACE,
@@ -156,14 +159,14 @@ platform :ios do
     MY_APP_ID = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
     MY_PROFILE = "match AdHoc #{MY_APP_ID}"
     MY_TEAM = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
-    build_number = (Time.now.to_i() - 1577840400) / 100
+    VERSION_CODE = ENV['BUILD_NUMBER_CUR'] || (Time.now.to_i() - 1577840400) / 100
     # match Appstore unitz.app.mobile
     ios_set_version(
-      version: "1.0." + build_number.to_s,
+      version: "1.0." + VERSION_CODE.to_s,
       xcodeproj: XCODE_PROJECT # optional
     )
     ios_set_build_number(
-      build_number: build_number, # optional, if not specified, Build Number will be incremented
+      build_number: VERSION_CODE, # optional, if not specified, Build Number will be incremented
       xcodeproj: XCODE_PROJECT # optional
     )
     # increment_build_number(xcodeproj: XCODE_PROJECT)
@@ -213,6 +216,8 @@ platform :ios do
       readonly: true
     )
 
+    update_appicon
+    splash_screen
 
     update_project_team( # Set the right team on your project
       teamid: CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
@@ -264,12 +269,12 @@ platform :ios do
     api_key = app_store_connect_api_key(
       key_id: ENV["APP_CONNECT_KEY_ID"],
       issuer_id: ENV["APP_CONNECT_ISSUER_ID"],
-      key_filepath: "./AuthKey.p8",
+      key_filepath: "./AuthKey_" + ENV["APP_CONNECT_KEY_ID"] + ".p8",
       duration: 1200, # optional (maximum 1200)
       in_house: false, # optional but may be required if using match/sigh
     )
     upload_to_testflight(
-      ipa: './builds/outputs/unitzmobile.ipa'
+      ipa: './builds/outputs/unitzmobileadvisor.ipa',
       api_key: api_key
     )
   end
@@ -289,14 +294,14 @@ platform :ios do
     appicon(
       appicon_devices: [:ipad, :iphone, :ios_marketing],
       appicon_path: "unitzmobileadvisor/Images.xcassets",
-      appicon_image_file: '../../../modules/unitz-assets/Icon.jpg'
+      appicon_image_file: '../../../modules/unitz-assets/Advisor/Icon.jpg'
     )
   end
 
   desc "Update splash"
   lane :splash_screen do
     appicon(
-      appicon_image_file: '../../../modules/unitz-assets/splash.png',
+      appicon_image_file: '../../../modules/unitz-assets/Advisor/splashscreen.png',
       appicon_devices: [:universal],
       appicon_path: "unitzmobileadvisor/Images.xcassets",
       appicon_name: 'SplashScreen.imageset'

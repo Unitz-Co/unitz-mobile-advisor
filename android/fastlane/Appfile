@@ -1,2 +1,2 @@
 json_key_file("app/google-play.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
-package_name("com.unitzmobileadvisor") # e.g. com.krausefx.app
+package_name("app.unitz.advisor") # e.g. com.krausefx.app

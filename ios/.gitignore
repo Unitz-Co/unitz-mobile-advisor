@@ -16,3 +16,6 @@ fastlane/derived
 # fastlane builds
 builds/*
 *.xcarchive
+
+*.p8
+GoogleService-Info.plist

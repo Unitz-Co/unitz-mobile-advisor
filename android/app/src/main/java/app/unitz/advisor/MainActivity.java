@@ -1,4 +1,4 @@
-package com.unitzmobileadvisor;
+package app.unitz.advisor;
 
 import android.os.Bundle;
 

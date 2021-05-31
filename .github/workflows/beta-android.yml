@@ -42,14 +42,14 @@ jobs:
       - name: clone env
         uses: actions/checkout@v2
         with:
-          repository: Unitz-Co/env-app-mobile
+          repository: Unitz-Co/envprod-app-mobile
           path: config/env-app-mobile
           token: ${{ secrets.PAT_TOKEN }}
           persist-credentials: true
       - name: clone credentials
         uses: actions/checkout@v2
         with:
-          repository: Unitz-Co/credentials
+          repository: Unitz-Co/credentials-prod
           path: config/credentials
           token: ${{ secrets.PAT_TOKEN }}
           persist-credentials: true
