@@ -8,124 +8,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:722707888554:android:8bec2c4a6eee82290453d3",
-        "android_client_info": {
-          "package_name": "app.unitz.advisor"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "722707888554-0aurtqerfhprvvo332o4vrnnoqvtjt9m.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "app.unitz.advisor",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
-        {
-          "client_id": "722707888554-86i1o5q62au4nsbsrqvh0tpq1jupqfne.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "app.unitz.advisor",
-            "certificate_hash": "1268c7fb26874af123e6fbe24626bfd5335b906b"
-          }
-        },
-        {
-          "client_id": "722707888554-gkfhiqbv8lm247s9r23km7kfsjpoi3di.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC0qjhR7EwOd4-y-WvkPjxO_krET5XmXUo"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "722707888554-gkfhiqbv8lm247s9r23km7kfsjpoi3di.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "722707888554-l9lfe3tsfsgh0sbcrclbj6c3sek0a7db.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "app.unitz.user"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:722707888554:android:fb0e8871f05291230453d3",
-        "android_client_info": {
-          "package_name": "app.unitz.user"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "722707888554-3m0pr4vqq65rrth3h1i13d70env4144r.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "app.unitz.user",
-            "certificate_hash": "1268c7fb26874af123e6fbe24626bfd5335b906b"
-          }
-        },
-        {
-          "client_id": "722707888554-rkf6caar7u60343dbrso7f95psuurhmh.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "app.unitz.user",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
-        {
-          "client_id": "722707888554-gkfhiqbv8lm247s9r23km7kfsjpoi3di.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC0qjhR7EwOd4-y-WvkPjxO_krET5XmXUo"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "722707888554-gkfhiqbv8lm247s9r23km7kfsjpoi3di.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "722707888554-l9lfe3tsfsgh0sbcrclbj6c3sek0a7db.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "app.unitz.user"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:722707888554:android:adddba8b3b89ddc30453d3",
         "android_client_info": {
           "package_name": "com.unitzmobile"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "722707888554-pogjb8btikp61vrputikbd6n6n2ra801.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.unitzmobile",
-            "certificate_hash": "1268c7fb26874af123e6fbe24626bfd5335b906b"
-          }
-        },
         {
           "client_id": "722707888554-t9g3ocrd8a4ft2qmkaqppdqtflj90o4e.apps.googleusercontent.com",
           "client_type": 1,
@@ -152,10 +40,10 @@
               "client_type": 3
             },
             {
-              "client_id": "722707888554-l9lfe3tsfsgh0sbcrclbj6c3sek0a7db.apps.googleusercontent.com",
+              "client_id": "722707888554-lck0ht14re83ttrj031cfk56o53tjnl7.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "app.unitz.user"
+                "bundle_id": "com.unitz.mobileadvisor"
               }
             }
           ]
@@ -170,22 +58,6 @@
         }
       },
       "oauth_client": [
-        {
-          "client_id": "722707888554-ajgoik2psmpso3i7tdvnr95p6q6q8q0h.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.unitzmobileadvisor",
-            "certificate_hash": "1268c7fb26874af123e6fbe24626bfd5335b906b"
-          }
-        },
-        {
-          "client_id": "722707888554-qlusi34pmgqo7q5s8al23r22d4u853pt.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.unitzmobileadvisor",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
         {
           "client_id": "722707888554-gkfhiqbv8lm247s9r23km7kfsjpoi3di.apps.googleusercontent.com",
           "client_type": 3
@@ -204,10 +76,10 @@
               "client_type": 3
             },
             {
-              "client_id": "722707888554-l9lfe3tsfsgh0sbcrclbj6c3sek0a7db.apps.googleusercontent.com",
+              "client_id": "722707888554-lck0ht14re83ttrj031cfk56o53tjnl7.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "app.unitz.user"
+                "bundle_id": "com.unitz.mobileadvisor"
               }
             }
           ]
