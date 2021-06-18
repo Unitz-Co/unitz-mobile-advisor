@@ -26,12 +26,18 @@ import I18nProvider from '@uz/unitz-providers/I18nProvider';
 import TestProvider from '@uz/unitz-providers/TestProvider';
 // import IAPProvider from '@na/components/IAPProvider';
 import ValidateProvider from '@uz/unitz-providers/ValidateProvider';
+import AppInfo from '@uz/unitz-providers/AppInfoProvider';
 
 import NSApp from '@uz/unitz-app-advisor';
 
+// @Intergrate CodePush
+import CodePush from 'react-native-code-push';
+const jsbundleVersion = 'JSBUNDLE_NUMBER';
+const AppInfoProvider = AppInfo(jsbundleVersion);
 const App = () => (
   <Providers
     providers={[
+      AppInfoProvider,
       RefProvider,
       TestProvider,
       ValidateProvider,
@@ -51,4 +57,4 @@ const App = () => (
   </Providers>
 );
 
-export default App;
+export default CodePush(App);

@@ -6,6 +6,12 @@
 #import <React/RCTRootView.h>
 #import <React/RCTLinkingManager.h>
 
+// @Import CodePush & AppCenter
+#import <CodePush/CodePush.h>
+#import <AppCenterReactNative.h>
+#import <AppCenterReactNativeAnalytics.h>
+#import <AppCenterReactNativeCrashes.h>
+
 #import <UMCore/UMModuleRegistry.h>
 #import <UMReactNativeAdapter/UMNativeModulesProxy.h>
 #import <UMReactNativeAdapter/UMModuleRegistryAdapter.h>
@@ -42,9 +48,14 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-#if defined(FB_SONARKIT_ENABLED) && __has_include(<FlipperKit/FlipperClient.h>)
-  InitializeFlipper(application);
-#endif
+  #if defined(FB_SONARKIT_ENABLED) && __has_include(<FlipperKit/FlipperClient.h>)
+    InitializeFlipper(application);
+  #endif
+  // @Intergrate AppCenter
+  [AppCenterReactNative register];
+  [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
+  [AppCenterReactNativeCrashes registerWithAutomaticProcessing];
+
   if ([FIRApp defaultApp] == nil) {
     [FIRApp configure];
   }  
@@ -89,7 +100,9 @@ static void InitializeFlipper(UIApplication *application) {
  #ifdef DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
  #else
-  return [[EXUpdatesAppController sharedInstance] launchAssetUrl];
+  // @Intergrate CodePush
+  return [CodePush bundleURL];
+  // return [[EXUpdatesAppController sharedInstance] launchAssetUrl];
  #endif
 }
 
