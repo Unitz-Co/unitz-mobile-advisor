@@ -24,23 +24,16 @@ import PNProvider from '@uz/unitz-providers/PNProvider';
 import { LoadableProvider } from '@uz/components/Loadable';
 import I18nProvider from '@uz/unitz-providers/I18nProvider';
 import TestProvider from '@uz/unitz-providers/TestProvider';
-// import IAPProvider from '@na/components/IAPProvider';
 import ValidateProvider from '@uz/unitz-providers/ValidateProvider';
 
-import AppInfo from '@uz/unitz-providers/AppInfoProvider';
-
 import AlertProvider from '@uz/unitz-providers/AlertProvider';
-
 import NSApp from '@uz/unitz-app-advisor';
 
-// @Intergrate CodePush
-import CodePush from 'react-native-code-push';
-const jsbundleVersion = 'JSBUNDLE_NUMBER';
-const AppInfoProvider = AppInfo(jsbundleVersion);
-const App = () => (
+import CodePushProvider from '@uz/unitz-providers/CodePushProvider';
+
+const App = CodePushProvider(() => (
   <Providers
     providers={[
-      AppInfoProvider,
       RefProvider,
       TestProvider,
       ValidateProvider,
@@ -59,6 +52,6 @@ const App = () => (
   >
     <NSApp />
   </Providers>
-);
+), `${process.env.JSBUNDLE_NUMBER}`);
 
-export default CodePush(App);
+export default App;
