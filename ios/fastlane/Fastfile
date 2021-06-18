@@ -231,6 +231,8 @@ platform :ios do
       profile_name: MY_PROFILE
     )
 
+    update_CodePushDeploymentKey
+
     build_app(
       workspace: XCODE_WORKSPACE,
       scheme: PROJECT_NAME,
@@ -336,4 +338,14 @@ platform :ios do
       skip_binary_upload: true,
   )
   end
+
+  desc 'Update CodePushDeploymentKey'
+  lane :update_CodePushDeploymentKey do
+    set_info_plist_value(
+      key: 'CodePushDeploymentKey',
+      value: ENV["CODE_PUSH_DEPLOYMENT_KEY"],
+      path: "#{PROJECT_NAME}/Info.plist"
+  )
+  end
+
 end

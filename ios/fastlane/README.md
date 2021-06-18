@@ -61,6 +61,11 @@ Upload screenshots to app store
 fastlane ios upload_metadata
 ```
 Upload metadata to app store
+### ios update_CodePushDeploymentKey
+```
+fastlane ios update_CodePushDeploymentKey
+```
+Update CodePushDeploymentKey
 
 ----
 
