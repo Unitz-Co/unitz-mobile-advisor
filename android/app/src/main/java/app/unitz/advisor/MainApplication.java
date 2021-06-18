@@ -27,6 +27,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
 import javax.annotation.Nullable;
+// @Intergrate CodePush
+import com.microsoft.codepush.react.CodePush;
 
 public class MainApplication extends Application implements ReactApplication {
   private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(
@@ -51,15 +53,18 @@ public class MainApplication extends Application implements ReactApplication {
       return "index";
     }
 
+    // @Override
+    // protected @Nullable String getJSBundleFile() {
+    //   if (BuildConfig.DEBUG) {
+    //     return super.getJSBundleFile();
+    //   } else {
+    //     return UpdatesController.getInstance().getLaunchAssetFile();
+    //   }
+    // }
     @Override
-    protected @Nullable String getJSBundleFile() {
-      if (BuildConfig.DEBUG) {
-        return super.getJSBundleFile();
-      } else {
-        return UpdatesController.getInstance().getLaunchAssetFile();
-      }
+    protected String getJSBundleFile() {
+        return CodePush.getJSBundleFile();
     }
-
     @Override
     protected @Nullable String getBundleAssetName() {
       if (BuildConfig.DEBUG) {
