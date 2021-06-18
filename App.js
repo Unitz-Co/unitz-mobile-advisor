@@ -26,7 +26,10 @@ import I18nProvider from '@uz/unitz-providers/I18nProvider';
 import TestProvider from '@uz/unitz-providers/TestProvider';
 // import IAPProvider from '@na/components/IAPProvider';
 import ValidateProvider from '@uz/unitz-providers/ValidateProvider';
+
 import AppInfo from '@uz/unitz-providers/AppInfoProvider';
+
+import AlertProvider from '@uz/unitz-providers/AlertProvider';
 
 import NSApp from '@uz/unitz-app-advisor';
 
@@ -51,6 +54,7 @@ const App = () => (
       SafeAreaProvider,
       LayoutProvider,
       AdvisorProvider,
+      AlertProvider,
     ]}
   >
     <NSApp />
