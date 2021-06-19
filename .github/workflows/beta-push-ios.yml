@@ -1,11 +1,11 @@
-name: stage codepush ios
+name: beta codepush ios
 
 on:
   push:
     branches:
-      - "stage-push/ios"
+      - "beta-push/ios"
 jobs:
-  stage-push-ios:
+  beta-push-ios:
     runs-on: macOS-latest
     strategy:
       matrix:
@@ -13,7 +13,7 @@ jobs:
     env:
       working-directory: ./ws/packages/unitz-mobile-advisor
       codepush-appname: Unitz/Unitz-Advisor-iOS
-      codepush-deployment: Staging
+      codepush-deployment: Production
     steps:
       - name: setup node v12
         uses: actions/setup-node@v2
@@ -33,14 +33,14 @@ jobs:
       - name: clone env
         uses: actions/checkout@v2
         with:
-          repository: Unitz-Co/env-app-mobile
+          repository: Unitz-Co/envprod-app-mobile
           path: config/env-app-mobile
           token: ${{ secrets.PAT_TOKEN }}
           persist-credentials: true
       - name: clone credentials
         uses: actions/checkout@v2
         with:
-          repository: Unitz-Co/credentials
+          repository: Unitz-Co/credentials-prod
           path: config/credentials
           token: ${{ secrets.PAT_TOKEN }}
           persist-credentials: true

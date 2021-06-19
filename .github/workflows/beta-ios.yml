@@ -1,15 +1,9 @@
-name: Beta ios
+name: beta ios
 
-# Run this workflow every time a new commit pushed to your repository
 on:
   push:
     branches:
       - "beta/ios"
-    # tags:
-    #   - "v*"
-# defaults:
-#   run:
-#     working-directory: ./your_working_dir
 jobs:
   beta-ios:
     runs-on: macOS-latest
@@ -24,6 +18,9 @@ jobs:
         with:
           node-version: '12'
           check-latest: true
+      - name: cleanup
+        run: |
+          rm -Rf ./*
       - name: clone workspace
         uses: actions/checkout@v2
         with:
@@ -45,7 +42,13 @@ jobs:
           path: config/credentials
           token: ${{ secrets.PAT_TOKEN }}
           persist-credentials: true
-
+      - name: clone config
+        uses: actions/checkout@v2
+        with:
+          repository: Unitz-Co/ws-scripts
+          path: config/ws-scripts
+          token: ${{ secrets.PAT_TOKEN }}
+          persist-credentials: true
       - name: checkout submodule
         run: |
           cd ws
@@ -58,21 +61,43 @@ jobs:
         working-directory: ${{env.working-directory}}
         run: |
           yarn config:ios
-      - name: build modules
+      - name: check dir
         working-directory: ${{env.working-directory}}
         run: |
+          PWD=$(pwd)
+      - uses: actions/cache@v2
+        id: cachenodemodules
+        with:
+          path: |
+            ${{env.working-directory}}/node_modules
+            ./ws/node_modules
+          key: ${{ runner.os }}nodemodules-${{ hashFiles('ws/yarn.lock') }}
+      - name: build modules
+        working-directory: ${{env.working-directory}}
+        if: steps.cachenodemodules.outputs.cache-hit != 'true'
+        run: |
+          pwd
           yarn install
           yarn nuke:modules
+      - uses: actions/cache@v2
+        id: cachepods
+        with:
+          path: ${{env.working-directory}}/ios/Pods
+          key: ${{ runner.os }}-${{ hashFiles('${{env.working-directory}}/ios/Podfile.lock') }}
       - name: install pod
         working-directory: ${{env.working-directory}}
+        if: steps.cachepods.outputs.cache-hit != 'true'
         run: |
           cd ios
           pod install
-      - name: Create IPA Build
+      - name: install appcenter
+        working-directory: ${{env.working-directory}}
+        run: |
+          npm install -g appcenter-cli
+      - name: Create codepush Build
         working-directory: ${{env.working-directory}}
         env:
-          APP_CONNECT_KEY_ID: ${{ secrets.APP_CONNECT_KEY_ID }}
-          APP_CONNECT_ISSUER_ID: ${{ secrets.APP_CONNECT_ISSUER_ID }}
+          APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
           APP_IDENTIFIER: ${{ secrets.APP_IDENTIFIER }}
           APPLE_ID: ${{ secrets.APPLE_ID }}
           ITC_TEAM_ID: ${{ secrets.ITC_TEAM_ID }}
@@ -84,8 +109,15 @@ jobs:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
         run: |
+          source ../../../config/ws-scripts/sm/num.sh
+          echo "BUILD_NUMBER_CUR: $BUILD_NUMBER_CUR"
+          sed -i '' -e '/^JSBUNDLE_NUMBER=/s/=.*/='$BUILD_NUMBER_CUR'/g' env/US.env
           cd ios
           fastlane beta
+          cd ..
+          cd ../..
+          ../config/ws-scripts/sm/tag.sh stage/n_${BUILD_NUMBER_CUR}
+          git push origin master --tags
       - uses: iRoachie/slack-github-actions@v2.3.0
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}

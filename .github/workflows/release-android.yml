@@ -1,30 +1,15 @@
 name: Release android
 
-# Run this workflow every time a new commit pushed to your repository
 on:
   push:
     branches:
       - "release/android"
-    # tags:
-    #   - "v*"
-# defaults:
-#   run:
-#     working-directory: ./your_working_dir
 jobs:
   release-android:
     runs-on: ubuntu-latest
     env:
       working-directory: ./ws/packages/unitz-mobile-advisor
     steps:
-      - name: Slack Notification Start
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-      - name: setup node v12
-        uses: actions/setup-node@v2
-        with:
-          node-version: '12'
-          check-latest: true
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.0
@@ -32,6 +17,14 @@ jobs:
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 1.8
+      - name: setup node v12
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+          check-latest: true
+      - name: cleanup
+        run: |
+          rm -Rf ./*
       - name: clone workspace
         uses: actions/checkout@v2
         with:
@@ -53,7 +46,13 @@ jobs:
           path: config/credentials
           token: ${{ secrets.PAT_TOKEN }}
           persist-credentials: true
-
+      - name: clone config
+        uses: actions/checkout@v2
+        with:
+          repository: Unitz-Co/ws-scripts
+          path: config/ws-scripts
+          token: ${{ secrets.PAT_TOKEN }}
+          persist-credentials: true
       - name: checkout submodule
         run: |
           cd ws
@@ -66,9 +65,22 @@ jobs:
         working-directory: ${{env.working-directory}}
         run: |
           yarn config:android
-      - name: build modules
+      - name: check dir
         working-directory: ${{env.working-directory}}
         run: |
+          PWD=$(pwd)
+      - uses: actions/cache@v2
+        id: cachenodemodules
+        with:
+          path: |
+            ${{env.working-directory}}/node_modules
+            ./ws/node_modules
+          key: ${{ runner.os }}nodemodules-${{ hashFiles('ws/yarn.lock') }}
+      - name: build modules
+        working-directory: ${{env.working-directory}}
+        if: steps.cachenodemodules.outputs.cache-hit != 'true'
+        run: |
+          pwd
           yarn install
           yarn nuke:modules
       - name: Setup kernel for react native, increase watchers
@@ -76,7 +88,13 @@ jobs:
       - name: build android
         working-directory: ${{env.working-directory}}
         run: |
-          sudo yarn build:android:release
+          source ../../../config/ws-scripts/sm/num.sh
+          echo "BUILD_NUMBER_CUR: $BUILD_NUMBER_CUR"
+          sed -i '' -e '/^JSBUNDLE_NUMBER=/s/=.*/='$BUILD_NUMBER_CUR'/g' env/US.env
+          sudo yarn build:android:beta
+          cd ../..
+          ../config/ws-scripts/sm/tag.sh stage/n_${BUILD_NUMBER_CUR}
+          git push origin master --tags
       - uses: iRoachie/slack-github-actions@v2.3.0
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
