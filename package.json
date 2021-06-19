@@ -25,6 +25,7 @@
     "build:ios:stage": "cd ios && fastlane firebase",
     "build:android": "cd android && ./gradlew assembleRelease && cd ../",
     "build:android:aab": "cd android && ./gradlew bundleRelease -Phermes=true && cd ../",
+    "build:workflows": "cd .github && ./src/build.sh",
     "deploy:android": "react-native run-android --variant=release",
     "android:gen-apks": "bundletool build-apks --bundle=./android/app/build/outputs/bundle/release/app.aab --output=./bundle/nsapp.apks --ks=./android/app/release.keystore --ks-key-alias=release_keystore_alias",
     "android:install-apks": "bundletool install-apks --apks=./bundle/nsapp.apks",
@@ -161,7 +162,7 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "babel-jest": "~25.2.6",
-    "babel-plugin-macros": "^2.8.0",
+    "babel-plugin-macros": "^3.0.0",
     "expo-yarn-workspaces": "^1.2.1",
     "firebase-tools": "^9.4.0",
     "get-yarn-workspaces": "1.0.2",
