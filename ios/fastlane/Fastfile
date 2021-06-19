@@ -119,6 +119,8 @@ platform :ios do
     update_appicon
     splash_screen
 
+    update_CodePushDeploymentKey
+    
     build_app(
       workspace: XCODE_WORKSPACE,
       scheme: PROJECT_NAME,
@@ -345,7 +347,12 @@ platform :ios do
       key: 'CodePushDeploymentKey',
       value: ENV["CODE_PUSH_DEPLOYMENT_KEY"],
       path: "#{PROJECT_NAME}/Info.plist"
-  )
+    )
+    set_info_plist_value(
+      key: 'AppSecret',
+      value: ENV["CODE_PUSH_APP_SECRET"],
+      path: "AppCenter-Config.plist"
+    )
   end
 
 end

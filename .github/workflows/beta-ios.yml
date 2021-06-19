@@ -98,6 +98,8 @@ jobs:
         working-directory: ${{env.working-directory}}
         env:
           APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
+          APP_CONNECT_KEY_ID: ${{ secrets.APP_CONNECT_KEY_ID }}
+          APP_CONNECT_ISSUER_ID: ${{ secrets.APP_CONNECT_ISSUER_ID }}
           APP_IDENTIFIER: ${{ secrets.APP_IDENTIFIER }}
           APPLE_ID: ${{ secrets.APPLE_ID }}
           ITC_TEAM_ID: ${{ secrets.ITC_TEAM_ID }}

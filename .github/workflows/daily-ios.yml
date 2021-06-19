@@ -2,7 +2,7 @@ name: Daily ios
 
 on:
   schedule:
-    - cron:  '1 1 * * *'
+    - cron:  '51 1 * * *'
 jobs:
   daily-ios:
     runs-on: macOS-latest
