@@ -76,6 +76,7 @@ jobs:
         working-directory: ${{env.working-directory}}
         if: steps.cachenodemodules.outputs.cache-hit != 'true'
         run: |
+          pwd
           yarn install
           yarn nuke:modules
       - uses: actions/cache@v2
