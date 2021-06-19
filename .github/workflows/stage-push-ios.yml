@@ -18,6 +18,8 @@ jobs:
         destination: ['platform=iOS Simulator,OS=13.1,name=iPhone 11']
     env:
       working-directory: ./ws/packages/unitz-mobile-advisor
+      codepush-appname: : Unitz/Unitz-Advisor-iOS
+      codepush-deployment: : Staging
     steps:
       - name: setup node v12
         uses: actions/setup-node@v2
@@ -100,7 +102,7 @@ jobs:
           source ../../../config/ws-scripts/sm/num.sh
           echo "BUILD_NUMBER_CUR: $BUILD_NUMBER_CUR"
           sed -i '' -e '/^JSBUNDLE_NUMBER=/s/=.*/='$BUILD_NUMBER_CUR'/g' env/US.env
-          appcenter codepush release-react -t "1.0.0" -a Unitz/Unitz-Advisor-iOS -d Staging -m true --description "${BUILD_NUMBER_CUR}"
+          appcenter codepush release-react -t "1.0.0" -a ${{env.codepush-appname}} -d ${{env.codepush-deployment}} -m true --description "${BUILD_NUMBER_CUR}"
           cd ../..
           ../config/ws-scripts/sm/tag.sh stage/n_${BUILD_NUMBER_CUR}
           git push origin master --tags

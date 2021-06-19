@@ -1,7 +1,0 @@
-- name: clone workspace
-  uses: actions/checkout@v2
-  with:
-    repository: Unitz-Co/ws-app-mobile
-    path: ws
-    token: ${{ secrets.PAT_TOKEN }}
-    persist-credentials: true
