@@ -1,0 +1,30 @@
+name: stage codepush ios
+
+# Run this workflow every time a new commit pushed to your repository
+on:
+  push:
+    branches:
+      - "stage-push/ios"
+    # tags:
+    #   - "v*"
+# defaults:
+#   run:
+#     working-directory: ./your_working_dir
+jobs:
+  stage-ios:
+    runs-on: macOS-latest
+    strategy:
+      matrix:
+        destination: ['platform=iOS Simulator,OS=13.1,name=iPhone 11']
+    env:
+      working-directory: ./ws/packages/unitz-mobile-advisor
+    steps:
+      - name: setup node v12
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+          check-latest: true
+      - name: cleanup
+        run: rm -Rf ./*
+      @import clone_workspace
+# kojo dir src/workflows --save build/workflows --import src/steps

@@ -24,6 +24,8 @@ jobs:
         with:
           node-version: '12'
           check-latest: true
+      - name: cleanup
+        run: rm -Rf ./*
       - name: clone workspace
         uses: actions/checkout@v2
         with:
@@ -64,8 +66,14 @@ jobs:
         working-directory: ${{env.working-directory}}
         run: |
           yarn config:ios
+      - uses: actions/cache@v2
+        id: cachenodemodules
+        with:
+          path: ${{env.working-directory}}/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('ws/yarn.lock') }}
       - name: build modules
         working-directory: ${{env.working-directory}}
+        if: steps.cachenodemodules.outputs.cache-hit != 'true'
         run: |
           yarn install
           yarn nuke:modules
