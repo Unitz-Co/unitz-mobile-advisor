@@ -78,22 +78,13 @@ jobs:
         working-directory: ${{env.working-directory}}
         run: |
           npm install -g appcenter-cli
-      - name: Create IPA Build
+      - name: Create codepush Build
         working-directory: ${{env.working-directory}}
         env:
           APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
-          # APP_IDENTIFIER: ${{ secrets.APP_IDENTIFIER }}
-          # APPLE_ID: ${{ secrets.APPLE_ID }}
-          # ITC_TEAM_ID: ${{ secrets.ITC_TEAM_ID }}
-          # GIT_REPO_URL: ${{ secrets.GIT_REPO_URL }}
-          # CI_KEYCHAIN_NAME: ${{ secrets.CI_KEYCHAIN_NAME }}
-          # CI_KEYCHAIN_PASSWORD: ${{ secrets.CI_KEYCHAIN_PASSWORD }}
-          # DEVELOPER_TEAM_ID: ${{ secrets.DEVELOPER_TEAM_ID }}
-          # FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
-          # MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          # FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
         run: |
-          source ../config/ws-scripts/sm/num.sh
+          source ../../../config/ws-scripts/sm/num.sh
+          echo "BUILD_NUMBER_CUR: $BUILD_NUMBER_CUR"
           sed -i '' -e '/^JSBUNDLE_NUMBER=/s/=.*/='$BUILD_NUMBER_CUR'/gI' env/US.env
           appcenter codepush release-react -t "1.0.0" -a Unitz/Unitz-Advisor-iOS -d Staging -m true --description "${BUILD_NUMBER_CUR}"
           cd ../..
