@@ -12,8 +12,8 @@ jobs:
         destination: ['platform=iOS Simulator,OS=13.1,name=iPhone 11']
     env:
       working-directory: ./ws/packages/unitz-mobile-advisor
-      codepush-appname: : Unitz/Unitz-Advisor-iOS
-      codepush-deployment: : Staging
+      codepush-appname: Unitz/Unitz-Advisor-iOS
+      codepush-deployment: Staging
     steps:
       @import stage_checkout
       @import ios_config
