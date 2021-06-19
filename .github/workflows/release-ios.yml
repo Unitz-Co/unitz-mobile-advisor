@@ -83,7 +83,7 @@ jobs:
         id: cachepods
         with:
           path: ${{env.working-directory}}/ios/Pods
-          key: ${{ runner.os }}-${{ hashFiles('${{env.working-directory}}/ios/Podfile.lock') }}
+          key: ${{ runner.os }}pods-${{ hashFiles('${{env.working-directory}}/ios/Podfile.lock') }}
       - name: install pod
         working-directory: ${{env.working-directory}}
         if: steps.cachepods.outputs.cache-hit != 'true'
@@ -117,6 +117,7 @@ jobs:
           cd ..
           cd ../..
           ../config/ws-scripts/sm/tag.sh stage/n_${BUILD_NUMBER_CUR}
+          git pull --tags origin master
           git push origin master --tags
       - uses: iRoachie/slack-github-actions@v2.3.0
         env:

@@ -94,6 +94,7 @@ jobs:
           sudo yarn build:android:beta
           cd ../..
           ../config/ws-scripts/sm/tag.sh stage/n_${BUILD_NUMBER_CUR}
+          git pull --tags origin master
           git push origin master --tags
       - uses: iRoachie/slack-github-actions@v2.3.0
         env:
