@@ -1,17 +1,11 @@
 name: stage codepush ios
 
-# Run this workflow every time a new commit pushed to your repository
 on:
   push:
     branches:
       - "stage-push/ios"
-    # tags:
-    #   - "v*"
-# defaults:
-#   run:
-#     working-directory: ./your_working_dir
 jobs:
-  stage-ios:
+  stage-push-ios:
     runs-on: macOS-latest
     strategy:
       matrix:

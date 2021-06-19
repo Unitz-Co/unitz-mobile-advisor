@@ -16,6 +16,8 @@ jobs:
       codepush-deployment: : Staging
     steps:
       @import stage_checkout
+      @import ios_config
       @import yarn_install
       @import pod_install
       @import appcenter_release
+      @import notify_status
