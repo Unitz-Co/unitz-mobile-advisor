@@ -88,7 +88,7 @@ jobs:
         run: |
           source ../../../config/ws-scripts/sm/num.sh
           echo "BUILD_NUMBER_CUR: $BUILD_NUMBER_CUR"
-          sed -i '' -e '/^JSBUNDLE_NUMBER=/s/=.*/='$BUILD_NUMBER_CUR'/g' env/US.env
+          sed -i -e '/^JSBUNDLE_NUMBER=/s/=.*/='$BUILD_NUMBER_CUR'/g' env/US.env
           appcenter codepush release-react -t "1.0.0" -a ${{env.codepush-appname}} -d ${{env.codepush-deployment}} -m true --description "${BUILD_NUMBER_CUR}"
           cd ../..
           ../config/ws-scripts/sm/tag.sh stage/n_${BUILD_NUMBER_CUR}
