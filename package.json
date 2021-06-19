@@ -163,6 +163,7 @@
     "@babel/core": "^7.2.2",
     "babel-jest": "~25.2.6",
     "babel-plugin-macros": "^3.0.0",
+    "babel-plugin-module-resolver": "^4.1.0",
     "expo-yarn-workspaces": "^1.2.1",
     "firebase-tools": "^9.4.0",
     "get-yarn-workspaces": "1.0.2",
