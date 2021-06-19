@@ -21,7 +21,10 @@ jobs:
           node-version: '12'
           check-latest: true
       - name: cleanup
-        run: rm -Rf ./*
+        run: |
+          ls -al
+          rm -Rf ./*
+          ls -al
       - name: clone workspace
         uses: actions/checkout@v2
         with:
@@ -43,7 +46,7 @@ jobs:
           path: config/credentials
           token: ${{ secrets.PAT_TOKEN }}
           persist-credentials: true
-      - name: clone credentials
+      - name: clone config
         uses: actions/checkout@v2
         with:
           repository: Unitz-Co/ws-scripts
