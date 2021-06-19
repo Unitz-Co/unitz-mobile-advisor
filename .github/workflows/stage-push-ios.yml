@@ -71,6 +71,7 @@ jobs:
           pwd
           PWD=$(pwd)
           echo $PWD
+          echo ~/ws
       - uses: actions/cache@v2
         id: cachenodemodules
         with:
