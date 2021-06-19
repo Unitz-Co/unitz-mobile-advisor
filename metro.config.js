@@ -57,6 +57,8 @@ function getConfig(appDir, options = {}) {
       extraNodeModules: new Proxy(
         {
           // Resolve all react-native module imports to the locally-installed version
+          // 'react': path.resolve(appDir, 'node_modules', 'react-native'),
+          'react': path.resolve('./node_modules/react'),
           'react-native': path.resolve(appDir, 'node_modules', 'react-native'),
           '@expo/vector-icons/FontAwesome': path.resolve(
             appDir,
