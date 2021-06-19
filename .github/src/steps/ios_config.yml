@@ -1,4 +1,0 @@
-- name: retrive certs and env
-  working-directory: ${{env.working-directory}}
-  run: |
-    yarn config:ios
