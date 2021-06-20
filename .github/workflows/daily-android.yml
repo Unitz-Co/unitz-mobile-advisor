@@ -54,7 +54,7 @@ jobs:
             git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.PAT_TOKEN }}:${{ secrets.PAT_TOKEN }}@github.com\//")
           done
           git submodule sync
-          git submodule update --init --recursive
+          git submodule update --init --recursive --remote --force
       - name: retrive certs and env
         working-directory: ${{env.working-directory}}
         run: |
