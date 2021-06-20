@@ -54,7 +54,7 @@ const App = CodePushProvider(
       <NSApp />
     </Providers>
   ),
-  `${process.env.JSBUNDLE_NUMBER}`
+  `${process.env.JSBUNDLE_NUMBER || ''}`
 );
 
 export default App;
