@@ -74,7 +74,7 @@ jobs:
           path: |
             ${{env.working-directory}}/node_modules
             ./ws/node_modules
-          key: ${{ runner.os }}nodemodules-${{ hashFiles('ws/yarn.lock') }}${{ hashFiles('${{env.working-directory}}/package.json') }}
+          key: ${{ runner.os }}nodemodules-${{ hashFiles('**/yarn.lock', '**/package-lock.json', '**/package.json') }}
       - name: build modules
         working-directory: ${{env.working-directory}}
         if: steps.cachenodemodules.outputs.cache-hit != 'true'
@@ -86,7 +86,7 @@ jobs:
         id: cachepods
         with:
           path: ${{env.working-directory}}/ios/Pods
-          key: ${{ runner.os }}pods-${{ hashFiles('${{env.working-directory}}/ios/Podfile.lock') }}
+          key: ${{ runner.os }}pods-${{ hashFiles('**/Podfile.lock') }}
       - name: install pod
         working-directory: ${{env.working-directory}}
         if: steps.cachepods.outputs.cache-hit != 'true'
