@@ -13,6 +13,7 @@
     "clean:android:build": "yarn clean && rm -rf ./android/app/build",
     "clean:ios": "cd ios && xcodebuild clean && rm -Rf builds && cd ../",
     "clean:build": "yarn clean:android && yarn clean:ios",
+    "update:env": "../../../config/ws-scripts/env/update.sh",
     "config:env": "rsync -aP ../../../config/env-app-mobile/packages/unitz-mobile-advisor/ ./",
     "config:android": "rsync -aP ../../../config/credentials/packages/unitz-mobile-advisor/android/ android/app/ && yarn config:env",
     "config:ios": "rsync -aP ../../../config/credentials/packages/unitz-mobile-advisor/ios/ ios/ && yarn config:env",
