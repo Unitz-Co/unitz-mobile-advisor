@@ -31,27 +31,30 @@ import NSApp from '@uz/unitz-app-advisor';
 
 import CodePushProvider from '@uz/unitz-providers/CodePushProvider';
 
-const App = CodePushProvider(() => (
-  <Providers
-    providers={[
-      RefProvider,
-      TestProvider,
-      ValidateProvider,
-      I18nProvider,
-      LoadableProvider,
-      AuthProvider,
-      PresenceProvider,
-      PNProvider,
-      ContentProvider,
-      StyleManager,
-      SafeAreaProvider,
-      LayoutProvider,
-      AdvisorProvider,
-      AlertProvider,
-    ]}
-  >
-    <NSApp />
-  </Providers>
-), `${process.env.JSBUNDLE_NUMBER}`);
+const App = CodePushProvider(
+  () => (
+    <Providers
+      providers={[
+        RefProvider,
+        TestProvider,
+        ValidateProvider,
+        I18nProvider,
+        LoadableProvider,
+        AuthProvider,
+        PresenceProvider,
+        PNProvider,
+        ContentProvider,
+        StyleManager,
+        SafeAreaProvider,
+        LayoutProvider,
+        AdvisorProvider,
+        AlertProvider,
+      ]}
+    >
+      <NSApp />
+    </Providers>
+  ),
+  `${process.env.JSBUNDLE_NUMBER}`
+);
 
 export default App;
