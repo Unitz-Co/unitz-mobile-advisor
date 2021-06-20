@@ -93,11 +93,7 @@ jobs:
         run: |
           cd ios
           pod install
-      - name: install appcenter
-        working-directory: ${{env.working-directory}}
-        run: |
-          npm install -g appcenter-cli
-      - name: Create codepush Build
+      - name: build and release to firebase
         working-directory: ${{env.working-directory}}
         env:
           APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
