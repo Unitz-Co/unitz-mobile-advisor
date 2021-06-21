@@ -6,11 +6,14 @@ module.exports = function (api) {
     presets: ['babel-preset-expo'],
     plugins: [
       'macros',
-      ["module-resolver", {
-        "alias": {
-          "react": path.resolve(process.cwd(), 'node_modules/react'),
-        }
-      }],
+      [
+        'module-resolver',
+        {
+          alias: {
+            react: path.resolve(process.cwd(), 'node_modules/react'),
+          },
+        },
+      ],
       [
         'import-graphql',
         {

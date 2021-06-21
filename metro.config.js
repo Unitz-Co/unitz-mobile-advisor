@@ -31,12 +31,8 @@ function getConfig(appDir, options = {}) {
     // Ignore other resolved react-native installations outside of
     // myapp-native - this prevents a module naming collision when mapped.
     // /^((?!vl-starter-bare).)+[\/\\]node_modules[/\\]react-native[/\\].*/,
-    RegExp(
-      `^((?!${appName}).)+[\/\\\\]node_modules[/\\\\]react-native[/\\\\].*`
-    ),
-    RegExp(
-      `^((?!${appName}).)+[\/\\\\]node_modules[/\\\\]@react-navigation[/\\\\].*`
-    ),
+    RegExp(`^((?!${appName}).)+[\/\\\\]node_modules[/\\\\]react-native[/\\\\].*`),
+    RegExp(`^((?!${appName}).)+[\/\\\\]node_modules[/\\\\]@react-navigation[/\\\\].*`),
     RegExp(`^((?!${appName}).)+[\/\\\\]node_modules[/\\\\]react[/\\\\].*`),
 
     // Ignore react-native-svg dependency in myapp-ui, mapped below.
@@ -58,18 +54,10 @@ function getConfig(appDir, options = {}) {
         {
           // Resolve all react-native module imports to the locally-installed version
           // 'react': path.resolve(appDir, 'node_modules', 'react-native'),
-          'react': path.resolve(appDir, 'node_modules', 'react'),
+          react: path.resolve(appDir, 'node_modules', 'react'),
           'react-native': path.resolve(appDir, 'node_modules', 'react-native'),
-          '@expo/vector-icons/FontAwesome': path.resolve(
-            appDir,
-            'node_modules',
-            '@expo/vector-icons/FontAwesome'
-          ),
-          '@expo/vector-icons/Feather': path.resolve(
-            appDir,
-            'node_modules',
-            '@expo/vector-icons/Feather'
-          ),
+          '@expo/vector-icons/FontAwesome': path.resolve(appDir, 'node_modules', '@expo/vector-icons/FontAwesome'),
+          '@expo/vector-icons/Feather': path.resolve(appDir, 'node_modules', '@expo/vector-icons/Feather'),
 
           // Resolve additional nohoist modules depended on by other packages
           // 'react-native-svg': path.resolve(
@@ -87,17 +75,14 @@ function getConfig(appDir, options = {}) {
           get: (target, name) => {
             // console.log('nananan', name);
             //redirects dependencies referenced from common/ to local node_modules
-            return name in target
-              ? target[name]
-              : path.join(process.cwd(), `node_modules/${name}`);
+            return name in target ? target[name] : path.join(process.cwd(), `node_modules/${name}`);
             // return (name in target ? target[name] : path.join(process.cwd(), `../../node_modules/${name}`));
           },
         }
       ),
       // useWatchman: false,
-      assetExts: expoMetroWS.resolver.assetExts.filter(ext => ext !== "svg"),
+      assetExts: expoMetroWS.resolver.assetExts.filter((ext) => ext !== 'svg'),
       // sourceExts,
-
     },
     transformer: {
       getTransformOptions: async () => ({
