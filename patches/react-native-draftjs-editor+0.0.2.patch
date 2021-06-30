@@ -1,0 +1,17 @@
+diff --git a/node_modules/react-native-draftjs-editor/index.js b/node_modules/react-native-draftjs-editor/index.js
+index 5cadedc..2109111 100644
+--- a/node_modules/react-native-draftjs-editor/index.js
++++ b/node_modules/react-native-draftjs-editor/index.js
+@@ -57,6 +57,12 @@ class RNDraftView extends Component {
+     if (isMounted) this.widgetMounted();
+   };
+ 
++  UNSAFE_componentWillReceiveProps(nextProps) {
++    if (nextProps.defaultValue != this.props.defaultValue) {
++      this.executeScript("setDefaultValue", nextProps.defaultValue);
++    }
++  }
++
+   widgetMounted = () => {
+     const {
+       placeholder,
