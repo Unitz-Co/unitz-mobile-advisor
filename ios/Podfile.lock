@@ -537,6 +537,10 @@ PODS:
   - opentok-react-native (0.15.0):
     - OpenTok
     - React
+  - Permission-Camera (3.0.4):
+    - RNPermissions
+  - Permission-Microphone (3.0.4):
+    - RNPermissions
   - PromisesObjC (1.2.12)
   - RCTRequired (0.63.4)
   - RCTTypeSafety (0.63.4):
@@ -854,6 +858,8 @@ PODS:
   - RNGoogleSignin (5.0.0):
     - GoogleSignIn (~> 5.0.0)
     - React-Core
+  - RNPermissions (3.0.4):
+    - React-Core
   - RNReanimated (1.13.3):
     - React-Core
   - RNScreens (2.10.1):
@@ -927,6 +933,8 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - OpenTok (= 2.18.1)
   - opentok-react-native (from `../../../node_modules/opentok-react-native`)
+  - Permission-Camera (from `../node_modules/react-native-permissions/ios/Camera`)
+  - Permission-Microphone (from `../node_modules/react-native-permissions/ios/Microphone`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
@@ -973,6 +981,7 @@ DEPENDENCIES:
   - "RNFBStorage (from `../node_modules/@react-native-firebase/storage`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
+  - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSha256 (from `../node_modules/react-native-sha256`)
@@ -1102,6 +1111,10 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   opentok-react-native:
     :path: "../../../node_modules/opentok-react-native"
+  Permission-Camera:
+    :path: "../node_modules/react-native-permissions/ios/Camera"
+  Permission-Microphone:
+    :path: "../node_modules/react-native-permissions/ios/Microphone"
   RCTRequired:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
@@ -1190,6 +1203,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
     :path: "../node_modules/@react-native-community/google-signin"
+  RNPermissions:
+    :path: "../node_modules/react-native-permissions"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -1302,6 +1317,8 @@ SPEC CHECKSUMS:
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   OpenTok: 2a816f5d77fbf2e2ebb5aec841bd21fb7dc7737b
   opentok-react-native: 6531293d6513d05ab2e2774d6d46a68117789963
+  Permission-Camera: 74dc395c37a06ebe915069c5dca954c7a2a5a2e3
+  Permission-Microphone: 450ff628a7146c415cfb98025e518810d9fa76ad
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   RCTRequired: 082f10cd3f905d6c124597fd1c14f6f2655ff65e
   RCTTypeSafety: 8c9c544ecbf20337d069e4ae7fd9a377aadf504b
@@ -1347,6 +1364,7 @@ SPEC CHECKSUMS:
   RNFBStorage: fb33c149ca21187b86f4e32dc35693525b5f2ac0
   RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
+  RNPermissions: c46788f4cd402287425983e04a4c9bb4356036eb
   RNReanimated: 514a11da3a2bcc6c3dfd9de32b38e2b9bf101926
   RNScreens: b748efec66e095134c7166ca333b628cd7e6f3e2
   RNSha256: bf2c90a9e0cec6dcbcc4100e4e19715ae7feaa34
@@ -1371,6 +1389,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: 6cad5929dbc0a5b986ad4d77caac497d4de730a7
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: dd65ec2cbf14c1633bdec376d4ccfcdc52090d69
+PODFILE CHECKSUM: 79205c907a38b269fbe5aca5b2d1f7ca665b09b5
 
 COCOAPODS: 1.10.1
