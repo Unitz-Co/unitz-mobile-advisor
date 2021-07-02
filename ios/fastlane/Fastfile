@@ -74,10 +74,10 @@ platform :ios do
     VERSION_CODE = ENV['BUILD_NUMBER_CUR'] || (Time.now.to_i() - 1577840400) / 100
 
     # match Appstore unitz.app.mobile
-    # ios_set_version(
-    #   version: "1.0." + VERSION_CODE.to_s,
-    #   xcodeproj: XCODE_PROJECT # optional
-    # )
+    ios_set_version(
+      version: "1.0.34",
+      xcodeproj: XCODE_PROJECT # optional
+    )
     ios_set_build_number(
       build_number: VERSION_CODE, # optional, if not specified, Build Number will be incremented
       xcodeproj: XCODE_PROJECT # optional
@@ -166,10 +166,10 @@ platform :ios do
     MY_TEAM = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
     VERSION_CODE = ENV['BUILD_NUMBER_CUR'] || (Time.now.to_i() - 1577840400) / 100
     # match Appstore unitz.app.mobile
-    # ios_set_version(
-    #   version: "1.0." + VERSION_CODE.to_s,
-    #   xcodeproj: XCODE_PROJECT # optional
-    # )
+    ios_set_version(
+      version: "1.0.34",
+      xcodeproj: XCODE_PROJECT # optional
+    )
     ios_set_build_number(
       build_number: VERSION_CODE, # optional, if not specified, Build Number will be incremented
       xcodeproj: XCODE_PROJECT # optional
