@@ -724,6 +724,8 @@ PODS:
   - react-native-fbsdk/Share (3.0.0):
     - FBSDKShareKit (~> 8.1)
     - React
+  - react-native-image-picker (4.0.4):
+    - React-Core
   - react-native-safe-area-context (3.2.0):
     - React-Core
   - react-native-vnpay-merchant (1.0.0):
@@ -949,6 +951,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-appearance (from `../node_modules/react-native-appearance`)
   - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
+  - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-vnpay-merchant (from `../node_modules/react-native-vnpay-merchant`)
   - react-native-webview (from `../node_modules/react-native-webview`)
@@ -1139,6 +1142,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-appearance"
   react-native-fbsdk:
     :path: "../node_modules/react-native-fbsdk"
+  react-native-image-picker:
+    :path: "../node_modules/react-native-image-picker"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-vnpay-merchant:
@@ -1332,6 +1337,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
   react-native-appearance: 0f0e5fc2fcef70e03d48c8fe6b00b9158c2ba8aa
   react-native-fbsdk: 8e92c7a334fd8d9c2b5d8b8fcd7ae2c314161099
+  react-native-image-picker: c07b072faa83f3480b473a15ea3c19cc39b3d6fa
   react-native-safe-area-context: f0906bf8bc9835ac9a9d3f97e8bde2a997d8da79
   react-native-vnpay-merchant: c9f1ebb375802c7004045e3646240f043acaaf61
   react-native-webview: 4e96d493f9f90ba4f03b28933f30b2964df07e39
