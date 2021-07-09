@@ -144,6 +144,7 @@
     "react-native-permissions": "^3.0.4",
     "react-native-push-notification": "^7.2.0",
     "react-native-reanimated": "~1.13.0",
+    "react-native-render-html": "^5.1.1",
     "react-native-rss-parser": "^1.5.1",
     "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "~2.10.1",
@@ -163,6 +164,7 @@
     "rxjs": "^6.6.6",
     "subscriptions-transport-ws": "^0.9.18",
     "ws": "^7.4.3",
+    "xss": "^1.0.9",
     "yup": "^0.31.0"
   },
   "devDependencies": {
