@@ -44,8 +44,12 @@
     "install:android": "adb install ./android/app/build/outputs/apk/release/app-release.apk",
     "install:ios": "ideviceinstaller -i ./ios/builds/outputs/unitzmobileadvisor.ipa",
     "postversion": "react-native-version --never-amend",
-    "postinstall": "yarn nuke:modules && patch-package",
+    "postinstall": "yarn nuke:modules && patch-package && yarn prepare",
     "postinstall:ignore": "patch-package",
+    "lint": "eslint ./",
+    "lint-fix": "eslint ./ --fix",
+    "prepare": "husky install",
+    "precommit": "lint-staged",
     "test": "jest"
   },
   "dependencies": {

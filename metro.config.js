@@ -74,7 +74,7 @@ function getConfig(appDir, options = {}) {
         {
           get: (target, name) => {
             // console.log('nananan', name);
-            //redirects dependencies referenced from common/ to local node_modules
+            // redirects dependencies referenced from common/ to local node_modules
             return name in target ? target[name] : path.join(process.cwd(), `node_modules/${name}`);
             // return (name in target ? target[name] : path.join(process.cwd(), `../../node_modules/${name}`));
           },
