@@ -307,11 +307,15 @@ platform :ios do
 
   desc "Update splash"
   lane :splash_screen do
-    appicon(
-      appicon_image_file: '../../../modules/unitz-assets/Advisor/splashscreen.png',
-      appicon_devices: [:universal],
-      appicon_path: "unitzmobileadvisor/Images.xcassets",
-      appicon_name: 'SplashScreen.imageset'
+    # appicon(
+    #   appicon_image_file: '../../../modules/unitz-assets/Advisor/splashscreen.png',
+    #   appicon_devices: [:universal],
+    #   appicon_path: "unitzmobileadvisor/Images.xcassets",
+    #   appicon_name: 'SplashScreen.imageset'
+    # )
+    yarn(
+      command: "config-splash-ios",
+      package_path: "../package.json"
     )
   end
 
