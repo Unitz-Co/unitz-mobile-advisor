@@ -88,7 +88,7 @@ platform :android do
   desc "Update appicon"
   lane :update_appicon do
     android_appicon(
-      appicon_image_file: '../../../modules/unitz-assets/IconAdvisor.png',
+      appicon_image_file: '../../../modules/unitz-assets/Advisor/Icon.png',
       appicon_path: 'app/src/main/res/mipmap',
       generate_rounded: true
     )
@@ -96,11 +96,15 @@ platform :android do
   
   desc "Update splash"
   lane :update_splash do
-    android_appicon(
-      appicon_image_file: '../../../modules/unitz-assets/SplashAdvisor.png',
-      appicon_icon_types: %i[splash_port splash_land],
-      appicon_path: 'app/src/main/res/splashscreen',
-      appicon_filename: 'splash'
+    # android_appicon(
+    #   appicon_image_file: '../../../modules/unitz-assets/SplashAdvisor.png',
+    #   appicon_icon_types: %i[splash_port splash_land],
+    #   appicon_path: 'app/src/main/res/splashscreen',
+    #   appicon_filename: 'splash'
+    # )
+    yarn(
+      command: "config-splash-android",
+      package_path: "../package.json"
     )
   end
 end
