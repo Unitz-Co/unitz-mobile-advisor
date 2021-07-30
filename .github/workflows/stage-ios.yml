@@ -116,8 +116,6 @@ jobs:
           cd ..
           yarn dist:ios:fib --app ${{secrets.FIREBASE_IOS_APP_ID}} --groups testers --token ${{secrets.FIREBASE_TOKEN}}
           cd ../..
-          ../config/ws-scripts/sm/tag.sh stage/n_${BUILD_NUMBER_CUR}
-          git push origin master --tags --force
       - uses: iRoachie/slack-github-actions@v2.3.0
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
