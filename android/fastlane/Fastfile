@@ -29,7 +29,9 @@ platform :android do
       version_code: VERSION_CODE
     )
     # first release
-    android_get_version_name('1.1.1')
+    android_get_version_name(
+      version_name: "1.1.1"
+    )
   end
 
   desc "Submit a new Beta Build to Firebase distribution"
