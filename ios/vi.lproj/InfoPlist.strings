@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  unitzmobileadvisor
+
+  Created by Cao Khánh Nhật on 8/6/21.
+  
+*/
+"NSCameraUsageDescription" = "để có thể tương tác qua video với nhà tư vấn yêu thích của bạn";
+"NSLocationWhenInUseUsageDescription" = "để ứng dụng cung cấp những dịch vụ và trải nghiệm tốt hơn cho bạn và khách hàng";
+"NSMicrophoneUsageDescription" = "để có thể nói chuyện với khách hàng của bạn";
+"NSPhotoLibraryUsageDescription" = "để ứng dụng có thể cập nhật hình ảnh trên trang cá nhân của bạn từ thư viện hình ảnh";
