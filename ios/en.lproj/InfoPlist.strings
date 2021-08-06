@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  unitzmobileadvisor
+
+  Created by Cao Khánh Nhật on 8/6/21.
+  
+*/
+
+
+"NSCameraUsageDescription" = "Please grant permission to access your device camera in order to make the call";
+"NSLocationWhenInUseUsageDescription" = "Please grant permission to access your device location in order to make the call";
+"NSMicrophoneUsageDescription" = "Please grant permission to access your device microphone in order to make the call";
+"NSPhotoLibraryUsageDescription" = "Please grant permission to access photo library in order to update your photo profile";
