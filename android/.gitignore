@@ -16,3 +16,4 @@ builds/*
 
 app/google-play.json
 app/google-services.json
+sentry.properties
