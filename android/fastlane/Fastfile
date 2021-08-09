@@ -53,10 +53,8 @@ platform :android do
     update_appicon()
     update_splash()
     gradle(
-      tasks: ["assembleRelease", "bundleRelease"],
-      properties: {
-        "versionCode" => VERSION_CODE,
-      }
+      task: 'bundle',
+      build_type: 'Release',
     )
 
     # crashlytics
@@ -66,7 +64,7 @@ platform :android do
       release_status: 'draft',
       skip_upload_screenshots: true,
       skip_upload_images: true,
-      apk: 'app/build/outputs/apk/release/app-release.apk',
+      aab: 'app/build/outputs/bundle/release/app-release.aab',
     )
   
   end
@@ -77,15 +75,13 @@ platform :android do
     update_appicon()
     update_splash()
     gradle(
-      tasks: ["assembleRelease", "bundleRelease"],
-      properties: {
-        "versionCode" => VERSION_CODE,
-      }
+      task: 'bundle',
+      build_type: 'Release',
     )
     upload_to_play_store(
       track: 'production',
       release_status: 'draft',
-      apk: 'app/build/outputs/apk/release/app-release.apk',
+      aab: 'app/build/outputs/bundle/release/app-release.aab',
     )
   end
 
