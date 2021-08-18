@@ -75,7 +75,7 @@ platform :ios do
 
     # match Appstore unitz.app.mobile
     ios_set_version(
-      version: "1.1.1",
+      version: "1.1.2",
       xcodeproj: XCODE_PROJECT # optional
     )
     ios_set_build_number(
@@ -167,7 +167,7 @@ platform :ios do
     VERSION_CODE = ENV['BUILD_NUMBER_CUR'] || (Time.now.to_i() - 1577840400) / 100
     # match Appstore unitz.app.mobile
     ios_set_version(
-      version: "1.1.1",
+      version: "1.1.2",
       xcodeproj: XCODE_PROJECT # optional
     )
     ios_set_build_number(
