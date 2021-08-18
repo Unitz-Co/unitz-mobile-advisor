@@ -40,7 +40,7 @@ platform :android do
     update_appicon()
     update_splash()
     gradle(
-      task: 'bundle',
+      task: 'assemble',
       build_type: 'Release',
     )
   end
