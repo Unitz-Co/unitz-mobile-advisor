@@ -1,0 +1,32 @@
+diff --git a/node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheet.tsx b/node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheet.tsx
+index 4bc4cf8..92b1b09 100644
+--- a/node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheet.tsx
++++ b/node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheet.tsx
+@@ -112,6 +112,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
+       handleComponent,
+       backdropComponent,
+       backgroundComponent,
++      renderOverlay,
+       children,
+     } = props;
+     //#endregion
+@@ -610,6 +611,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
+     //   topInset,
+     //   bottomInset,
+     // });
++
+     return (
+       <BottomSheetProvider value={externalContextVariables}>
+         <BottomSheetBackdropContainer
+@@ -625,6 +627,11 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
+           topInset={topInset}
+           bottomInset={bottomInset}
+         >
++
++          {renderOverlay && <Animated.View style={[{ position:'absolute', width:'100%', zIndex:0 }]}>{
++          renderOverlay()
++          }</Animated.View>}
++
+           <BottomSheetContentWrapper
+             key="BottomSheetContentWrapper"
+             ref={containerTapGestureRef}
