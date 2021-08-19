@@ -30,7 +30,7 @@ platform :android do
     )
     # first release
     android_set_version_name(
-      version_name: "1.1.1"
+      version_name: "1.1.2"
     )
   end
 
@@ -40,7 +40,7 @@ platform :android do
     update_appicon()
     update_splash()
     gradle(
-      task: 'bundle',
+      task: 'assemble',
       build_type: 'Release',
     )
   end
