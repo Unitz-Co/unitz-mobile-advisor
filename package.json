@@ -1,6 +1,6 @@
 {
   "name": "@uz/unitz-mobile-advisor",
-  "version": "1.0.0",
+  "version": "1.1.2",
   "main": "index.js",
   "scripts": {
     "nuke:modules": "find '../../modules/' -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
