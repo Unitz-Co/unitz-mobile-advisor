@@ -38,9 +38,11 @@ allprojects {
             url("$rootDir/../node_modules/react-native-vnpay-merchant/android/repo")
         }
 
-        maven {
-            url "http://tokbox.bintray.com/maven"
-        }
+        // maven {
+        //     url "http://tokbox.bintray.com/maven"
+        // }
+
+        mavenCentral()
 
         google()
         jcenter()
