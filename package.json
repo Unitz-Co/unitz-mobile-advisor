@@ -137,6 +137,7 @@
     "react-native": "~0.63.3",
     "react-native-appearance": "~0.3.3",
     "react-native-code-push": "^7.0.1",
+    "react-native-device-info": "^8.3.1",
     "react-native-draftjs-editor": "^0.0.2",
     "react-native-dropdown-picker": "^5.1.14",
     "react-native-elements": "^3.0.0-alpha.1",
