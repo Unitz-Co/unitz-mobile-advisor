@@ -17,10 +17,10 @@ jobs:
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 1.8
-      - name: setup node v12
+      - name: setup node v14
         uses: actions/setup-node@v2
         with:
-          node-version: '12'
+          node-version: '14'
           check-latest: true
       - name: cleanup
         run: |
@@ -75,7 +75,7 @@ jobs:
           path: |
             ${{env.working-directory}}/node_modules
             ./ws/node_modules
-          key: ${{ runner.os }}nodemodules-${{ hashFiles('**/yarn.lock', '**/package-lock.json', '**/package.json') }}
+          key: ${{ runner.os }}14nodemodules-${{ hashFiles('**/yarn.lock', '**/package-lock.json', '**/package.json', '**/*.patch') }}
       - name: build modules
         working-directory: ${{env.working-directory}}
         if: steps.cachenodemodules.outputs.cache-hit != 'true'
