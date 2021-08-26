@@ -19,6 +19,8 @@
     "config:ios": "rsync -aP ../../../config/credentials/packages/unitz-mobile-advisor/ios/ ios/ && yarn config:env",
     "dist:android:fib": "firebase appdistribution:distribute android/app/build/outputs/apk/release/app-release.apk",
     "dist:ios:fib": "firebase appdistribution:distribute ios/builds/outputs/unitzmobileadvisor.ipa",
+    "dist:android:apc": "appcenter distribute release -f android/app/build/outputs/apk/release/app-release.apk",
+    "dist:ios:apc": "appcenter distribute release -f ios/builds/outputs/unitzmobileadvisor.ipa",
     "build:android:debug": "yarn clean:android:build && cd android && ./gradlew assembleDebug",
     "build:android:release": "cd android && fastlane release",
     "build:android:beta": "cd android && fastlane beta",
