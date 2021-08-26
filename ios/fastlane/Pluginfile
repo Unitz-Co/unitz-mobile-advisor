@@ -5,3 +5,4 @@
 gem 'fastlane-plugin-appicon'
 gem 'fastlane-plugin-versioning_ios'
 gem 'fastlane-plugin-yarn'
+gem 'fastlane-plugin-load_json'
