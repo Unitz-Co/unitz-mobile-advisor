@@ -29,15 +29,15 @@ import ValidateProvider from '@uz/unitz-providers/ValidateProvider';
 
 import AlertProvider from '@uz/unitz-providers/AlertProvider';
 import NSApp from '@uz/unitz-app-advisor';
+import MessageProvider from '@uz/unitz-providers/MessageProvider';
 
 import CodePushProvider from '@uz/unitz-providers/CodePushProvider';
 
 import * as Sentry from '@sentry/react-native';
 
-Sentry.init({ 
-  dsn: 'https://2587155cf3c9458294bd1a6b093b570c@o946942.ingest.sentry.io/5896107', 
+Sentry.init({
+  dsn: 'https://2587155cf3c9458294bd1a6b093b570c@o946942.ingest.sentry.io/5896107',
 });
-
 
 const App = CodePushProvider(
   () => (
@@ -58,6 +58,7 @@ const App = CodePushProvider(
         LayoutProvider,
         AdvisorProvider,
         AlertProvider,
+        MessageProvider,
       ]}
     >
       <NSApp />
