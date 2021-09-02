@@ -52,8 +52,7 @@ platform :android do
     update_appicon()
     update_splash()
     gradle(
-      task: 'bundle',
-      build_type: 'Release',
+      tasks: ['bundleRelease', 'assembleRelease'],
     )
 
     # crashlytics
