@@ -2,45 +2,20 @@
 
 PWD=$(pwd)
 
-# clone repo
-#./devops-app/scripts/cloneprod-repo.sh
-
 #force to stop metro
 kill -9 $(lsof -t -i:8081)
 
-# cd ws
-# yarn init:sm
-# yarn checkout:sm
-# yarn pull:sm
-
 # builder number tag
-# source ../config/ws-scripts/sm/num.sh
 source ../../../config/ws-scripts/sm/num.sh
 
-# cd packages/unitz-mobile
-
+yarn clean:android && yarn clean:ios && yarn clean
 # config
-# yarn config:ios
-yarn config:envprod
-# yarn install
-# yarn nuke:modules
-
-# install
-cd ios
-# pod install
+yarn config:ios
 
 # build
-fastlane firebase
-cd ..
+yarn build:ios:stage
+
 # release
+yarn dist:ios:fib --app $(node -p -e "require('./.env.json').FIREBASE_IOS_APP_ID") --groups testers
+yarn dist:ios:apc --app $(node -p -e "require('./.env.json').APPCENTER_IOS_APP_ID") --group testers
 
-# push tag commit
-# cd ../..
-# ../config/ws-scripts/sm/tag.sh beta/n_${BUILD_NUMBER_CUR}
-
-# git push origin master --tags
-
-#cleanup
-# cd $PWD
-# rm -Rf ./ws
-# rm -Rf ./config
