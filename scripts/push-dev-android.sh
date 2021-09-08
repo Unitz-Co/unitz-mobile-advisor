@@ -12,5 +12,5 @@ yarn clean
 yarn config:android
 
 sed -i '' -e '/^JSBUNDLE_NUMBER=/s/=.*/='$BUILD_NUMBER_CUR'/g' env/US.env
-appcenter codepush release-react -t $(node -p -e "require('./package.json').version") -a "Unitz/Unitz-Advisor-Android" -d Staging --description "${BUILD_NUMBER_CUR}"
+appcenter codepush release-react -t $(node -p -e "require('./package.json').version") -a $(node -p -e "require('./.env.json').APPCENTER_ANDROID_APP_ID") -d Staging --description "${BUILD_NUMBER_CUR}"
 
