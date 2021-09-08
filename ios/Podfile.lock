@@ -732,8 +732,6 @@ PODS:
     - React-Core
   - react-native-keep-awake (3.2.0):
     - React
-  - react-native-netinfo (6.0.2):
-    - React-Core
   - react-native-safe-area-context (3.2.0):
     - React-Core
   - react-native-twilio-video-webrtc (2.0.0):
@@ -976,7 +974,6 @@ DEPENDENCIES:
   - react-native-idle-timer (from `../node_modules/react-native-idle-timer`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-keep-awake (from `../node_modules/react-native-keep-awake`)
-  - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-twilio-video-webrtc (from `../node_modules/react-native-twilio-video-webrtc`)
   - react-native-vnpay-merchant (from `../node_modules/react-native-vnpay-merchant`)
@@ -1179,8 +1176,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-image-picker"
   react-native-keep-awake:
     :path: "../node_modules/react-native-keep-awake"
-  react-native-netinfo:
-    :path: "../node_modules/@react-native-community/netinfo"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-twilio-video-webrtc:
@@ -1385,7 +1380,6 @@ SPEC CHECKSUMS:
   react-native-idle-timer: 1d5aacf8915340f4c59b56ff829a6c08ec4e43ee
   react-native-image-picker: c07b072faa83f3480b473a15ea3c19cc39b3d6fa
   react-native-keep-awake: 41bae558a47103a9ca06d9a35f15bab88207d7db
-  react-native-netinfo: 92e6e4476eb8bf6fc2d7c0a6ca0a1406f663d73a
   react-native-safe-area-context: f0906bf8bc9835ac9a9d3f97e8bde2a997d8da79
   react-native-twilio-video-webrtc: 5b40ee0129687cb89fb5055680aed35c8db4be07
   react-native-vnpay-merchant: c9f1ebb375802c7004045e3646240f043acaaf61
