@@ -30,6 +30,7 @@ import ValidateProvider from '@uz/unitz-providers/ValidateProvider';
 import AlertProvider from '@uz/unitz-providers/AlertProvider';
 import NSApp from '@uz/unitz-app-advisor';
 import MessageProvider from '@uz/unitz-providers/MessageProvider';
+import LoadingProvider from '@uz/unitz-providers/LoadingProvider';
 
 import CodePushProvider from '@uz/unitz-providers/CodePushProvider';
 
@@ -59,6 +60,7 @@ const App = CodePushProvider(
         AdvisorProvider,
         AlertProvider,
         MessageProvider,
+        LoadingProvider,
       ]}
     >
       <NSApp />
