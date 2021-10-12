@@ -33,6 +33,7 @@ import MessageProvider from '@uz/unitz-providers/MessageProvider';
 import LoadingProvider from '@uz/unitz-providers/LoadingProvider';
 
 import CodePushProvider from '@uz/unitz-providers/CodePushProvider';
+import AppContentfulProvider from '@uz/unitz-providers/AppContentfulProvider';
 
 import * as Sentry from '@sentry/react-native';
 
@@ -54,6 +55,7 @@ const App = CodePushProvider(
         PresenceProvider,
         PNProvider,
         ContentProvider,
+        AppContentfulProvider,
         StyleManager,
         SafeAreaProvider,
         LayoutProvider,
