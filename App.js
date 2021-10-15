@@ -46,6 +46,7 @@ const App = CodePushProvider(
     <Providers
       providers={[
         RefProvider,
+        LoadingProvider,
         AppConfigProvider,
         TestProvider,
         ValidateProvider,
@@ -62,7 +63,6 @@ const App = CodePushProvider(
         AdvisorProvider,
         AlertProvider,
         MessageProvider,
-        LoadingProvider,
       ]}
     >
       <NSApp />
