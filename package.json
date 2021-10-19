@@ -183,7 +183,9 @@
     "subscriptions-transport-ws": "^0.9.18",
     "ws": "^7.4.3",
     "xss": "^1.0.9",
-    "yup": "^0.31.0"
+    "yup": "^0.31.0",
+    "quill-delta-to-html": "^0.12.0",
+    "react-native-quilljs": "https://github.com/swiftpipe/react-native-quilljs"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
