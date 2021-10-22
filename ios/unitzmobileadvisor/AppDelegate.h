@@ -3,6 +3,7 @@
 #import <React/RCTBridgeDelegate.h>
 #import <UIKit/UIKit.h>
 #import <UserNotifications/UNUserNotificationCenter.h>
+#import <PushKit/PushKit.h>
 
 #import <UMCore/UMAppDelegateWrapper.h>
 

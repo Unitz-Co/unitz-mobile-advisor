@@ -6,6 +6,9 @@
 #import <React/RCTRootView.h>
 #import <React/RCTLinkingManager.h>
 #import <RNCPushNotificationIOS.h>
+#import <PushKit/PushKit.h>
+#import "RNCallKeep.h"
+#import "RNVoipPushNotificationManager.h"
 
 // @Import CodePush & AppCenter
 #import <CodePush/CodePush.h>
@@ -76,6 +79,7 @@ static void InitializeFlipper(UIApplication *application) {
    UNUserNotificationCenter *center =
        [UNUserNotificationCenter currentNotificationCenter];
    center.delegate = self;
+  [RNVoipPushNotificationManager voipRegistration];
   return YES;
 }
 
@@ -161,11 +165,57 @@ static void InitializeFlipper(UIApplication *application) {
   return [RCTLinkingManager application:application openURL:url options:options];
 }
 
-// Universal Links
-- (BOOL)application:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity restorationHandler:(nonnull void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
- return [RCTLinkingManager application:application
-                  continueUserActivity:userActivity
-                    restorationHandler:restorationHandler];
+// Handle updated push credentials
+- (void)pushRegistry:(PKPushRegistry *)registry didUpdatePushCredentials:(PKPushCredentials *)credentials forType:(NSString *)type {
+
+  // Register VoIP push token (a property of PKPushCredentials) with server
+  [RNVoipPushNotificationManager didUpdatePushCredentials:credentials forType:(NSString *)type];
+}
+
+// Handle incoming pushes
+- (void)pushRegistry:(PKPushRegistry *)registry didReceiveIncomingPushWithPayload:(PKPushPayload *)payload        forType:(PKPushType)type withCompletionHandler:(void (^)(void))completion {
+
+  // Process the received push
+  [RNVoipPushNotificationManager didReceiveIncomingPushWithPayload:payload forType:(NSString *)type];
+
+  NSDictionary *content = [payload.dictionaryPayload valueForKey:@"aps"];
+  NSDictionary *alert = [content valueForKey:@"alert"];
+  NSDictionary *items = [alert valueForKey:@"items"];
+
+  NSString *uuid = [[[NSUUID UUID] UUIDString] lowercaseString];
+  NSString *callerName = [items valueForKey:@"peer_caller_id_name"];
+  NSString *handle = [items valueForKey:@"peer_caller_id_number"];
+
+  [RNCallKeep reportNewIncomingCall: uuid
+                               handle: handle
+                           handleType: @"generic"
+                             hasVideo: NO
+                  localizedCallerName: callerName
+                      supportsHolding: YES
+                         supportsDTMF: YES
+                     supportsGrouping: YES
+                   supportsUngrouping: YES
+                          fromPushKit: YES
+                              payload: content
+                withCompletionHandler: completion];
+}
+
+//// Universal Links
+//- (BOOL)application:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity restorationHandler:(nonnull void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
+//  [RNCallKeep application:application
+//           continueUserActivity:userActivity
+//             restorationHandler:restorationHandler];
+//  return [RCTLinkingManager application:application
+//                  continueUserActivity:userActivity
+//                    restorationHandler:restorationHandler];
+//}
+- (BOOL)application:(UIApplication *)application
+continueUserActivity:(NSUserActivity *)userActivity
+ restorationHandler:(void(^)(NSArray * __nullable restorableObjects))restorationHandler
+{
+  return [RNCallKeep application:application
+            continueUserActivity:userActivity
+              restorationHandler:restorationHandler];
 }
 
 @end
