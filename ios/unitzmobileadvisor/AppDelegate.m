@@ -200,22 +200,22 @@ static void InitializeFlipper(UIApplication *application) {
                 withCompletionHandler: completion];
 }
 
-//// Universal Links
-//- (BOOL)application:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity restorationHandler:(nonnull void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
-//  [RNCallKeep application:application
-//           continueUserActivity:userActivity
-//             restorationHandler:restorationHandler];
-//  return [RCTLinkingManager application:application
-//                  continueUserActivity:userActivity
-//                    restorationHandler:restorationHandler];
-//}
-- (BOOL)application:(UIApplication *)application
-continueUserActivity:(NSUserActivity *)userActivity
- restorationHandler:(void(^)(NSArray * __nullable restorableObjects))restorationHandler
-{
-  return [RNCallKeep application:application
-            continueUserActivity:userActivity
-              restorationHandler:restorationHandler];
+// Universal Links
+- (BOOL)application:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity restorationHandler:(nonnull void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
+  [RNCallKeep application:application
+           continueUserActivity:userActivity
+             restorationHandler:restorationHandler];
+  return [RCTLinkingManager application:application
+                  continueUserActivity:userActivity
+                    restorationHandler:restorationHandler];
 }
+//- (BOOL)application:(UIApplication *)application
+//continueUserActivity:(NSUserActivity *)userActivity
+// restorationHandler:(void(^)(NSArray * __nullable restorableObjects))restorationHandler
+//{
+//  return [RNCallKeep application:application
+//            continueUserActivity:userActivity
+//              restorationHandler:restorationHandler];
+//}
 
 @end
