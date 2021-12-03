@@ -54,6 +54,7 @@ const App = CodePushProvider(
         LoadableProvider,
         AuthProvider,
         PresenceProvider,
+        AlertProvider,
         PNProvider,
         ContentProvider,
         AppContentfulProvider,
@@ -61,7 +62,6 @@ const App = CodePushProvider(
         SafeAreaProvider,
         LayoutProvider,
         AdvisorProvider,
-        AlertProvider,
         MessageProvider,
       ]}
     >
