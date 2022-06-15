@@ -2,7 +2,7 @@ name: Daily android
 
 on:
   schedule:
-    - cron:  '31 1 * * *'
+    - cron: '1 1 * 1 *'
 jobs:
   daily-android:
     runs-on: ubuntu-latest
